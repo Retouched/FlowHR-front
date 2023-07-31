@@ -1,0 +1,32 @@
+.allUsersContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+.mainManageUsersContainer {
+  min-height: 100vh;
+}
+
+.mainManagerUsers {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.addUserBtnAndTitle {
+  display: flex;
+  justify-content: space-around;
+}
+
+.addUserBtn {
+  display: flex;
+}
+
+.backBtn {
+  width: 150px;
+}
