@@ -7,12 +7,19 @@ function User() {
     <>
       <div className={styles.userContainer}>
         <div>PHOTO</div>
-        <div>Prénom NOM / email / Pole / Poste</div>
-        <div className={styles.roleAndUpdateStatusBtnContainer}>
-          <div>Role</div>
-          <div>Button</div>
+        <div className={styles.detailsUser}>
+          Prénom NOM / email / Pole / Poste
         </div>
-        <FontAwesomeIcon icon={faCircleXmark} className={styles.circleXmark} />
+        <div className={styles.roleBtnAndXmark}>
+          <div className={styles.roleAndUpdateStatusBtnContainer}>
+            <div>Role</div>
+            <div>Button</div>
+          </div>
+          <FontAwesomeIcon
+            icon={faCircleXmark}
+            className={styles.circleXmark}
+          />
+        </div>
       </div>
     </>
   );

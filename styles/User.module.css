@@ -10,5 +10,15 @@
 
 .circleXmark {
   color: #ee5340;
-  width: 200px;
+  margin-left: 70px;
+}
+
+.detailsUser {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.roleBtnAndXmark {
+  display: flex;
 }

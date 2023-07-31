@@ -7,8 +7,7 @@ function ManageUsers() {
   return (
     <>
       <div>NAVBAR</div>
-      <div>Gestion des utilisateurs</div>
-      <div>Liste des users</div>
+      <div className={styles.title}>Gestion des utilisateurs</div>
       <div className={styles.allUsersContainer}>
         <User />
       </div>
