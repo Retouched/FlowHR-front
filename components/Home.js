@@ -54,6 +54,13 @@ function Home() {
     <div>
       <main className={styles.main}>
         <div className={styles.upperPanel}>
+          <Image
+            style={{ backgroundColor: "transparent" }}
+            src="/logo.png"
+            alt="logo"
+            width={100}
+            height={100}
+          />
           <h1 className={styles.title}>FlowHR</h1>
         </div>
         <div className={styles.containerBackground}>
@@ -63,7 +70,7 @@ function Home() {
               <input className={styles.input} placeholder="Dupon"></input>
             </div>
             <div className={styles.inputContainer}>
-              <span className={styles.inputTitle}>Adresse Email</span>
+              <span className={styles.inputTitle}>Adresse e-mail</span>
               <input
                 className={styles.input}
                 placeholder="exemple@entreprise.fr"
@@ -82,10 +89,12 @@ function Home() {
               )}
             </div>
             <button
-              className={styles.buttonConnexion}
+              className={styles.buttonConnection}
               id="connect"
               onClick={() => handleConnection()}
-            />
+            >
+              Connexion
+            </button>
             <span></span>
           </div>
         </div>
