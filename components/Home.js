@@ -53,33 +53,41 @@ function Home() {
   return (
     <div>
       <main className={styles.main}>
-        <div className={styles.upperPanel}></div>
-        <div className={styles.container}>
-          <div className={styles.inputContainer}>
-            <span className={styles.inputTitle}></span>
-            <input className={styles.input} placeholder="Dupon"></input>
+        <div className={styles.upperPanel}>
+          <h1 className={styles.title}>FlowHR</h1>
+        </div>
+        <div className={styles.containerBackground}>
+          <div className={styles.container}>
+            <div className={styles.inputContainer}>
+              <span className={styles.inputTitle}>Nom</span>
+              <input className={styles.input} placeholder="Dupon"></input>
+            </div>
+            <div className={styles.inputContainer}>
+              <span className={styles.inputTitle}>Adresse Email</span>
+              <input
+                className={styles.input}
+                placeholder="exemple@entreprise.fr"
+              ></input>
+            </div>
+            <div className={styles.inputContainer}>
+              <span className={styles.inputTitle}>Mot de passe</span>
+              <input
+                className={styles.input}
+                placeholder="mot de passe à 8 caractères"
+              ></input>
+              {isSignInError && (
+                <span className={styles.error}>
+                  Le nom, l'e-mail ou le mot de passe sont inccorect.
+                </span>
+              )}
+            </div>
+            <button
+              className={styles.buttonConnexion}
+              id="connect"
+              onClick={() => handleConnection()}
+            />
+            <span></span>
           </div>
-          <div className={styles.inputContainer}>
-            <span className={styles.inputTitle}></span>
-            <input
-              className={styles.input}
-              placeholder="exemple@entreprise.fr"
-            ></input>
-          </div>
-          <div className={styles.inputContainer}>
-            <span className={styles.inputTitle}></span>
-            <input
-              className={styles.input}
-              placeholder="mot de passe à 8 caractères"
-            ></input>
-            {isSignInError && (
-              <span className={styles.error}>
-                Le nom, l'e-mail ou le mot de passe sont inccorect.
-              </span>
-            )}
-          </div>
-          <button className={styles.buttonConnexion}></button>
-          <span></span>
         </div>
       </main>
     </div>
