@@ -1,10 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../styles/ManageUsers.module.css";
 import User from "./User";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 function ManageUsers() {
-  fetch("");
+  const [usersData, setUsersData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((response) => response.json())
+      // RAJOUTER .populate
+      .then((data) => {
+        setUsersData(data.data);
+      });
+  }, []);
+
+  console.log("usersData: ", usersData);
+
+  // MAP POUR AFFICHER L'ENSEMBLE DES USERS
+  const users = usersData.map((data, i) => {
+    console.log("data: ", data);
+    return <User key={i} {...data} />;
+  });
 
   return (
     <>
@@ -21,11 +39,9 @@ function ManageUsers() {
               Ajouter un collaborateur
             </button>
             <div className={styles.title}>Gestion des utilisateurs</div>
-            <div className={styles.whiteText}>Texte pour mis en page</div>
+            <div className={styles.whiteText}>Texte pour mise en page</div>
           </div>
-          <div className={styles.allUsersContainer}>
-            <User />
-          </div>
+          <div className={styles.allUsersContainer}>{users}</div>
           <button className={styles.backBtn} id="back to HR dashboard">
             RETOUR A LA PAGE D'ACCUEIL
           </button>

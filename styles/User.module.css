@@ -6,11 +6,12 @@
   border-radius: 20px;
   width: 70%;
   height: 137px;
+  cursor: pointer;
 }
 
 .circleXmark {
   color: #ee5340;
-  margin-left: 70px;
+  margin-left: 10px;
 }
 
 .detailsUser {
