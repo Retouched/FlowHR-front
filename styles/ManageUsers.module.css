@@ -10,6 +10,7 @@
 }
 .mainManageUsersContainer {
   min-height: 100vh;
+  margin: 30px;
 }
 
 .mainManagerUsers {
@@ -20,13 +21,32 @@
 
 .addUserBtnAndTitle {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .addUserBtn {
   display: flex;
+  align-items: center;
+  height: 70px;
+  border: 1px solid #018786;
+  border-radius: 20px;
+  background-color: white;
+  color: #018786;
+  cursor: pointer;
 }
 
 .backBtn {
-  width: 150px;
+  background-color: #857770;
+  color: white;
+  width: 300px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.whiteText {
+  color: white;
+}
+
+.userPlusIcon {
+  margin: 10px;
 }
