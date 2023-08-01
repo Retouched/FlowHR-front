@@ -13,9 +13,14 @@ function ManageUsers() {
   const [addUserLastname, setAddUserLastname] = useState("");
   const [addUserPassword, setAddUserPassword] = useState("");
   const [addUserEmail, setAddUserEmail] = useState("");
-  const [addUserDepartment, setAddUserDepartment] = useState("");
-  const [addUserJob, setAddUserJob] = useState("");
-  const [addUserRole, setAddUserRole] = useState("");
+  const [addUserDepartment, setAddUserDepartment] = useState("placeholder");
+  const [addUserJob, setAddUserJob] = useState("placeholder");
+  const [addUserRole, setAddUserRole] = useState("placeholder");
+
+  // USE STATE POUR RECUPERATION DES LISTES EN BDD (POLES, POSTES, ROLES)
+  const [departments, setDepartments] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [roles, setRoles] = useState([]);
 
   const [usersData, setUsersData] = useState([]);
 
@@ -48,12 +53,63 @@ function ManageUsers() {
       });
   };
 
+  // RECUPERATION DES POLES POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/departments")
+      .then((response) => response.json())
+      .then((data) => {
+        setDepartments(data.allDepartments);
+      });
+  }, []);
+
+  const allDepartments = departments.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.departmentName}
+      </option>
+    );
+  });
+
+  // RECUPERATION DES POSTES POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/jobs")
+      .then((response) => response.json())
+      .then((data) => {
+        setJobs(data.allJobs);
+      });
+  }, []);
+
+  const allJobs = jobs.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.jobName}
+      </option>
+    );
+  });
+
+  // RECUPERATION DES ROLES POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/roles")
+      .then((response) => response.json())
+      .then((data) => {
+        setRoles(data.allRoles);
+        console.log(data.allRoles);
+      });
+  }, []);
+
+  const allRoles = roles.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.roleName}
+      </option>
+    );
+  });
+
   // MAP POUR AFFICHER L'ENSEMBLE DES USERS
   const users = usersData.map((data, i) => {
-    console.log("data: ", data);
     return <User key={i} {...data} />;
   });
-  console.log("users: ", users);
+
   return (
     <>
       <div className={styles.mainManageUsersContainer}>
@@ -91,24 +147,39 @@ function ManageUsers() {
                   value={addUserEmail}
                   onChange={(e) => setAddUserEmail(e.target.value)}
                 ></input>
-                <select name="selectedDepartment">
-                  <option value="apple">Apple</option>
-                  <option value="banana">Banana</option>
-                  <option value="orange">Orange</option>
+                <select
+                  name="selectedDepartment"
+                  value={addUserDepartment}
+                  onChange={(e) => setAddUserDepartment(e.target.value)}
+                >
+                  <option disabled value="placeholder">
+                    Pôle
+                  </option>
+                  {allDepartments}
                 </select>
-                <select name="selectedJob">
-                  <option value="apple">Apple</option>
-                  <option value="banana">Banana</option>
-                  <option value="orange">Orange</option>
+                <select
+                  name="selectedJob"
+                  value={addUserJob}
+                  onChange={(e) => setAddUserJob(e.target.value)}
+                >
+                  <option disabled value="placeholder">
+                    Poste
+                  </option>
+                  {allJobs}
                 </select>
-                <select name="selectedRole">
-                  <option value="apple">Apple</option>
-                  <option value="banana">Banana</option>
-                  <option value="orange">Orange</option>
+                <select
+                  name="selectedRole"
+                  value={addUserRole}
+                  onChange={(e) => setAddUserRole(e.target.value)}
+                >
+                  <option disabled value="placeholder">
+                    Rôle
+                  </option>
+                  {allRoles}
                 </select>
                 <div className={styles.btnContainer}>
                   <button onClick={toggleIsModalAddUserOpen}>ANNULER</button>
-                  <button onClick={handleAddUser()}>
+                  <button onClick={() => handleAddUser()}>
                     CREER LE COLLABORATEUR
                   </button>
                 </div>
