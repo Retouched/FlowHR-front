@@ -39,7 +39,7 @@
   color: white;
   align-items: center;
   border-radius: 20;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   margin-top: 0;
   font-family: 'Fredoka One', sans-serif;
 }
@@ -80,7 +80,9 @@
   padding: 4px;
   margin-top: 20px;
   height: 40px;
+  cursor: pointer;
 }
 .error{
   color: #f44336;
+  font-size: smaller;
 }
