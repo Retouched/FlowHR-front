@@ -10,7 +10,6 @@ function ManageUsers() {
   useEffect(() => {
     fetch("http://localhost:3000/users")
       .then((response) => response.json())
-      // RAJOUTER .populate
       .then((data) => {
         setUsersData(data.data);
       });
