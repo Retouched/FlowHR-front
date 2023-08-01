@@ -23,7 +23,7 @@ function ManageUsers() {
     console.log("data: ", data);
     return <User key={i} {...data} />;
   });
-
+  console.log("users: ", users);
   return (
     <>
       <div className={styles.mainManageUsersContainer}>

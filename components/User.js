@@ -8,7 +8,8 @@ function User(props) {
       <div className={styles.userContainer}>
         <div>PHOTO</div>
         <div className={styles.detailsUser}>
-          {props.firstname} {props.lastname} {props.email} {props.department}
+          {props.firstname} {props.lastname} {props.email}{" "}
+          {props.department.departmentName}
         </div>
         <div className={styles.roleBtnAndXmark}>
           <div className={styles.roleAndUpdateStatusBtnContainer}>
