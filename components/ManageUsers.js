@@ -9,13 +9,13 @@ import useToggle from "./use-toggle";
 function ManageUsers() {
   const [isModalAddUserOpen, toggleIsModalAddUserOpen] = useToggle(false);
 
-  const [addUserFirstname, setAddUserFirstname] = useState(null);
-  const [addUserLastname, setAddUserLastname] = useState(null);
-  const [addUserPassword, setAddUserPassword] = useState(null);
-  const [addUserEmail, setAddUserEmail] = useState(null);
-  const [addUserDepartment, setAddUserDepartment] = useState(null);
-  const [addUserJob, setAddUserJob] = useState(null);
-  const [addUserRole, setAddUserRole] = useState(null);
+  const [addUserFirstname, setAddUserFirstname] = useState("");
+  const [addUserLastname, setAddUserLastname] = useState("");
+  const [addUserPassword, setAddUserPassword] = useState("");
+  const [addUserEmail, setAddUserEmail] = useState("");
+  const [addUserDepartment, setAddUserDepartment] = useState("");
+  const [addUserJob, setAddUserJob] = useState("");
+  const [addUserRole, setAddUserRole] = useState("");
 
   const [usersData, setUsersData] = useState([]);
 
@@ -27,8 +27,6 @@ function ManageUsers() {
       });
   }, []);
 
-  console.log("usersData: ", usersData);
-
   // AU CLIC SUR AJOUTER UN COLLABORATEUR
   const handleAddUser = () => {
     fetch("http://localhost:3000/users", {
@@ -37,11 +35,11 @@ function ManageUsers() {
       body: JSON.stringify({
         firstname: addUserFirstname,
         lastname: addUserLastname,
-        //password: ,
-        //email: ,
-        //department: ,
-        //job: ,
-        //role: ,
+        password: addUserPassword,
+        email: addUserEmail,
+        department: addUserDepartment,
+        job: addUserJob,
+        role: addUserRole,
       }),
     })
       .then((response) => response.json())
@@ -69,44 +67,51 @@ function ManageUsers() {
                   type="text"
                   placeholder="firstname"
                   id="addUserFirstname"
-                  onChange={(e) => setAddUserFirstname(e)}
+                  value={addUserFirstname}
+                  onChange={(e) => setAddUserFirstname(e.target.value)}
                 ></input>
                 <input
                   type="text"
                   placeholder="lastname"
                   id="addUserLastname"
-                  onChange={(e) => setAddUserLastname(e)}
+                  value={addUserLastname}
+                  onChange={(e) => setAddUserLastname(e.target.value)}
                 ></input>
                 <input
                   type="text" // a changer en password pour mise en production
                   placeholder="password"
                   id="addUserPassword"
-                  onChange={(e) => setAddUserPassword(e)}
+                  value={addUserPassword}
+                  onChange={(e) => setAddUserPassword(e.target.value)}
                 ></input>
                 <input
                   type="text"
                   placeholder="email"
                   id="addUserEmail"
-                  onChange={(e) => setAddUserEmail(e)}
+                  value={addUserEmail}
+                  onChange={(e) => setAddUserEmail(e.target.value)}
                 ></input>
-                <input
-                  type="text"
-                  placeholder="Pôle"
-                  id="addUserDepartment"
-                  onChange={(e) => setAddUserDepartment(e)}
-                ></input>
-                <input
-                  type="text"
-                  placeholder="Poste"
-                  id="addUserJob"
-                  onChange={(e) => setAddUserJob(e)}
-                ></input>
-                <input
-                  type="text"
-                  placeholder="Role"
-                  id="addUserRole"
-                  onChange={(e) => setAddUserRole(e)}
-                ></input>
+                <select name="selectedDepartment">
+                  <option value="apple">Apple</option>
+                  <option value="banana">Banana</option>
+                  <option value="orange">Orange</option>
+                </select>
+                <select name="selectedJob">
+                  <option value="apple">Apple</option>
+                  <option value="banana">Banana</option>
+                  <option value="orange">Orange</option>
+                </select>
+                <select name="selectedRole">
+                  <option value="apple">Apple</option>
+                  <option value="banana">Banana</option>
+                  <option value="orange">Orange</option>
+                </select>
+                <div className={styles.btnContainer}>
+                  <button onClick={toggleIsModalAddUserOpen}>ANNULER</button>
+                  <button onClick={handleAddUser()}>
+                    CREER LE COLLABORATEUR
+                  </button>
+                </div>
               </div>
             </Modal>
           )}
