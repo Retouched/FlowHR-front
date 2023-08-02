@@ -44,6 +44,7 @@ function Home() {
               lastname: signInLastname,
               token: data.token,
               email: signInEmail,
+              role: data.role.roleName,
             })
           );
           setSignInLastname("");
@@ -68,7 +69,7 @@ function Home() {
       router.push("/homeManager");
     } else if (user.token && user.role === "RH") {
       router.push("/homeHR");
-    } else if (user.token && user.role === "Director") {
+    } else if (user.token && user.role === "Directeur") {
       router.push("/homeDirector");
     }
   }, []);

@@ -52,6 +52,11 @@
 	flex-direction: column;
   margin-right:-20px ;
 }
+.optionContainer:hover{
+  background-color: #018786;
+  color: white;
+}
+
 .optionContainer {
 	display: flex;
 	justify-content: space-between;
@@ -62,4 +67,5 @@
   border-bottom: solid 2px black;
   border-right: solid 2px black;
   border-radius: 5px;
+  cursor: pointer;
 }

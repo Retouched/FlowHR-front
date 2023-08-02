@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 function NavBar() {
   const user = useSelector((state) => state.user.value);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logout());
