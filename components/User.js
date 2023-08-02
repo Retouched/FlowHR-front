@@ -3,18 +3,9 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/User.module.css";
 
 function User(props) {
-  // AU CLIC SUR LA CROIX ON SUPPRIME UN COLLABORATEUR DE LA BDD
-  const handleDelete = (email) => {
-    console.log("email: ", email);
-    fetch("http://localhost:3000/users", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: props.email }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+  //INVERSE DATA FLOW AFIN D'UTILISER LA FONCTION HANDLE DELETE
+  const handleClickOnXmark = () => {
+    props.handleDelete(props.email);
   };
 
   return (
@@ -34,7 +25,7 @@ function User(props) {
             icon={faCircleXmark}
             size="xl"
             className={styles.circleXmark}
-            onClick={() => handleDelete(props.email)}
+            onClick={() => handleClickOnXmark()}
           />
         </div>
       </div>

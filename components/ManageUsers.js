@@ -17,6 +17,9 @@ function ManageUsers() {
   const [addUserJob, setAddUserJob] = useState("placeholder");
   const [addUserRole, setAddUserRole] = useState("placeholder");
 
+  // EMAIL A RECUPERER POUR INVERSE DATA FLOW
+  const [emailToDeleteUser, setEmailToDeleteUser] = useState("");
+
   // USE STATE POUR RECUPERATION DES LISTES EN BDD (POLES, POSTES, ROLES)
   const [departments, setDepartments] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -29,7 +32,6 @@ function ManageUsers() {
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
-    console.log("test");
     fetch("http://localhost:3000/users")
       .then((response) => response.json())
       .then((data) => {
@@ -58,9 +60,32 @@ function ManageUsers() {
           setAddUserError(true);
         } else {
           setUsersData(data.allUsers);
+          setAddUserDepartment("placeholder");
+          setAddUserEmail("");
+          setAddUserFirstname("");
+          setAddUserLastname("");
+          setAddUserJob("placeholder");
+          setAddUserPassword("");
+          setAddUserRole("placeholder");
           toggleIsModalAddUserOpen(false);
         }
         console.log(data);
+      });
+  };
+
+  // AU CLIC SUR LA CROIX ON SUPPRIME UN COLLABORATEUR DE LA BDD
+  const handleDelete = (emailFromChild) => {
+    fetch("http://localhost:3000/users", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: emailFromChild }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          setUsersData(data.allUsers);
+          console.log(data);
+        }
       });
   };
 
@@ -104,7 +129,6 @@ function ManageUsers() {
       .then((response) => response.json())
       .then((data) => {
         setRoles(data.allRoles);
-        console.log(data.allRoles);
       });
   }, []);
 
@@ -118,7 +142,7 @@ function ManageUsers() {
 
   // MAP POUR AFFICHER L'ENSEMBLE DES USERS
   const users = usersData.map((data, i) => {
-    return <User key={i} {...data} />;
+    return <User key={i} {...data} handleDelete={handleDelete} />;
   });
 
   return (
