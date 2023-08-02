@@ -4,9 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../reducers/user";
+import { useRouter } from "next/router";
 
 function NavBar() {
   const user = useSelector((state) => state.user.value);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/"); // Redirection vers Signin
+  };
 
   const popoverContent = (
     <div className={styles.popoverContent}>
@@ -26,8 +34,8 @@ function NavBar() {
       <div className={styles.optionContainer}>
         <span className="New hire req">Nouvelle demande d'ambauche</span>
       </div>
-      <div className={styles.optionContainer}>
-        <span className="Lougout">Deconnexion</span>
+      <div className={styles.optionContainer} onClick={() => handleLogout()}>
+        <span className="Logout">Deconnexion</span>
       </div>
     </div>
   );

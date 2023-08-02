@@ -50,11 +50,11 @@ function Home() {
           setSignInEmail("");
           setSignInPassword("");
           setIsSignInError(false);
-          if (data.role === "Manager") {
+          if (data.role.roleName === "Manager") {
             router.push("/homeManager"); // Redirection vers /HomeManager si rôle = manager
-          } else if (data.role === "RH") {
+          } else if (data.role.roleName === "RH") {
             router.push("/homeHR"); // Redirection vers /HomeRH si rôle = RH
-          } else if (data.role === "Directeur") {
+          } else if (data.role.roleName === "Directeur") {
             router.push("/homeDirector"); // Redirection vers /HomeDirecteur si rôle = directeur
           }
         } else {
