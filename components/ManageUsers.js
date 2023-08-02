@@ -22,6 +22,10 @@ function ManageUsers() {
   const [jobs, setJobs] = useState([]);
   const [roles, setRoles] = useState([]);
 
+  // USE STATE POUR AFFICHER UN MESSAGE SI LE SALARIE EXISTE DEJA
+  const [addUserError, setAddUserError] = useState(false);
+
+  // USE STATE AFIN D'AFFICHER TOUS LES USERS DEJA EXISTANTS VIA .MAP
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
@@ -49,6 +53,9 @@ function ManageUsers() {
     })
       .then((response) => response.json())
       .then((data) => {
+        if (!data.result) {
+          setAddUserError(true);
+        }
         console.log(data);
       });
   };
@@ -177,6 +184,11 @@ function ManageUsers() {
                   </option>
                   {allRoles}
                 </select>
+                {addUserError && (
+                  <span className={styles.error}>
+                    L'utilisateur existe déjà.
+                  </span>
+                )}
                 <div className={styles.btnContainer}>
                   <button onClick={toggleIsModalAddUserOpen}>ANNULER</button>
                   <button onClick={() => handleAddUser()}>
