@@ -34,7 +34,7 @@ function ManageUsers() {
       .then((data) => {
         setUsersData(data.data);
       });
-  }, []);
+  }, [usersData]);
 
   // AU CLIC SUR AJOUTER UN COLLABORATEUR
   const handleAddUser = () => {
