@@ -9,42 +9,47 @@ function NavBar() {
   const user = useSelector((state) => state.user.value);
 
   const popoverContent = (
-    <>
-      <div className={styles.popoverContent}>Mon tableau de bord</div>
-      {user.role === "RH" && (
-        <div className={styles.popoverContent}>Ajouter un collaborateur</div>
+    <div className={styles.popoverContent}>
+      <div className={styles.optionContainer}>
+        <span className="Dashboard">Accueil</span>
+      </div>
+      {user.role !== "Directeur" && (
+        <div className={styles.optionContainer}>
+          <span className="Dashboard">Mon Tableau de bord</span>
+        </div>
       )}
-      <div className={styles.popoverContent}>Nouvelle demande d'ambauche</div>
-      <div className={styles.popoverContent}>Deconnexion</div>
-    </>
+      {user.role === "RH" && (
+        <div className={styles.optionContainer}>
+          <span className="Add user">Ajouter un collaborateur</span>
+        </div>
+      )}
+      <div className={styles.optionContainer}>
+        <span className="New hire req">Nouvelle demande d'ambauche</span>
+      </div>
+      <div className={styles.optionContainer}>
+        <span className="Lougout">Deconnexion</span>
+      </div>
+    </div>
   );
 
   return (
     <nav className={styles.navBar}>
-      <div className={styles.logoContainer}>
-        <img src="/logo.png" alt="Logo" className={styles.logo} />
-      </div>
-      <div className={styles.dropdownContainer}>
-        <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-        <Popover
-          placement="topRight"
-          title="User Menu"
-          content={popoverContent}
-          className={styles.popover}
-          trigger="click"
+      <img src="/logo.png" alt="Logo" className={styles.logo} />
+      <Popover placement="topRight" content={popoverContent} trigger="click">
+        <Button
+          style={{
+            color: "black",
+            backgroundColor: "#018786",
+            border: "none",
+            display: "flex",
+          }}
         >
-          <Button
-            style={{
-              color: "black",
-              backgroundColor: "inherit",
-              border: "none",
-            }}
-          >
-            {user.lastname}
-          </Button>
+          <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+
+          {user.lastname}
           <FontAwesomeIcon icon={faCaretDown} className={styles.userArrow} />
-        </Popover>
-      </div>
+        </Button>
+      </Popover>
     </nav>
   );
 }
