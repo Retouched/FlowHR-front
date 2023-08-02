@@ -55,6 +55,8 @@ function ManageUsers() {
       .then((data) => {
         if (!data.result) {
           setAddUserError(true);
+        } else {
+          toggleIsModalAddUserOpen(false);
         }
         console.log(data);
       });
