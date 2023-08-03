@@ -4,25 +4,40 @@ import { useEffect, useState } from "react";
 
 function RequestDetailsCard() {
   // DONNEES POUR AJOUTER UNE DEMANDE
-  const [addGoalRequest, setAddGoalRequest] = useState("");
+  const [addGoalRequest, setAddGoalRequest] = useState("placeholder");
   const [addNameReplacedPerson, setAddNameReplacedPerson] = useState("");
   const [addLastnameReplacedPerson, setAddLastnameReplacedPerson] =
     useState("");
   const [addJob, setAddJob] = useState("placeholder");
   const [addNewJob, setAddNewJob] = useState("");
-  const [addClassification, setAddClassification] = useState("");
+  const [addClassification, setAddClassification] = useState("placeholder");
   const [addFirstnameManager, setAddFirstnameManager] = useState("");
   const [addLastnameManager, setAddLastnameManager] = useState("");
   const [addUserDepartment, setAddUserDepartment] = useState("placeholder");
 
-  // USE STATE POUR RECUPERATION DES LISTES EN BDD (POLES, POSTES, ROLES)
+  // USE STATE POUR RECUPERATION DES LISTES EN BDD (POLES, POSTES, ROLES, CLASSIFICATIONS, GOALREQUESTS...)
   const [departments, setDepartments] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [roles, setRoles] = useState([]);
+  const [goalRequests, setGoalRequests] = useState([]);
+  const [classifications, setClassifications] = useState([]);
 
-  // RECUPERATION DES
-  // GOAL REQUESTS
-  // CLASSIFICATIONS
+  // RECUPERATION DES GOAL REASONS POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/goalRequests")
+      .then((response) => response.json())
+      .then((data) => {
+        setGoalRequests(data.allGoalRequests);
+      });
+  }, []);
+
+  const allGoalRequests = goalRequests.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.goalRequestName}
+      </option>
+    );
+  });
 
   // RECUPERATION DES POSTES POUR INSERTION DANS UNE LISTE
   useEffect(() => {
@@ -37,6 +52,23 @@ function RequestDetailsCard() {
     return (
       <option key={i} value={data._id}>
         {data.jobName}
+      </option>
+    );
+  });
+
+  // RECUPERATION DES CLASSIFICATIONS POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/classifications")
+      .then((response) => response.json())
+      .then((data) => {
+        setClassifications(data.allClassifications);
+      });
+  }, []);
+
+  const allClassifications = classifications.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.classification}
       </option>
     );
   });
@@ -65,13 +97,16 @@ function RequestDetailsCard() {
     <div className={styles.main}>
       <div className={styles.inputContainer}>
         <span>Raison de la demande :</span>
-        <input
-          type="text"
-          placeholder="Raison de la demande"
-          id="goalRequest"
+        <select
+          name="selectedGoalRequest"
           value={addGoalRequest}
           onChange={(e) => setAddGoalRequest(e.target.value)}
-        ></input>
+        >
+          <option disabled value="placeholder">
+            Raison de la demande
+          </option>
+          {allGoalRequests}
+        </select>
         <span>Identité de la personne remplacée :</span>
         <input
           type="text"
@@ -105,6 +140,7 @@ function RequestDetailsCard() {
           value={addNewJob}
           onChange={(e) => setAddNewJob(e.target.value)}
         ></input>
+        <span>Classification :</span>
         <select
           name="selectedClassification"
           value={addClassification}
@@ -113,7 +149,7 @@ function RequestDetailsCard() {
           <option disabled value="placeholder">
             Classification
           </option>
-          {}
+          {allClassifications}
         </select>
         <span>Prénom du manager :</span>
         <input
@@ -141,10 +177,6 @@ function RequestDetailsCard() {
           </option>
           {allDepartments}
         </select>
-        <div className={styles.btnContainer}>
-          <button id="back to dashboard">ANNULER</button>
-          <button id="next step">ETAPE SUIVANTE</button>
-        </div>
       </div>
     </div>
   );
