@@ -141,6 +141,10 @@ function RequestDetailsCard() {
           </option>
           {allDepartments}
         </select>
+        <div className={styles.btnContainer}>
+          <button id="back to dashboard">ANNULER</button>
+          <button id="next step">ETAPE SUIVANTE</button>
+        </div>
       </div>
     </div>
   );
