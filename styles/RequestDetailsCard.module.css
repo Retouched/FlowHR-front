@@ -1,0 +1,8 @@
+.main {
+  height: 100vh;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}

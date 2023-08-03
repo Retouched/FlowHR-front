@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import HireRequestCard from "./HireRequestCard";
 
 function HomeManager() {
-  // PREVOIR UNE BOUCLE POUR FAIRE APPARAITRE LES 3 DERNIERES HIRE REQUESTS
+  // PREVOIR UNE BOUCLE POUR FAIRE APPARAITRE LES 3 DERNIERES HIRE REQUESTS DU MANAGER
 
   return (
     <div>
