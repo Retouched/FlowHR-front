@@ -11,7 +11,7 @@ function User(props) {
   return (
     <>
       <div className={styles.userContainer}>
-        <div>PHOTO</div>
+        <div>AVATAR</div>
         <div className={styles.detailsUser}>
           {props.firstname} {props.lastname} {props.email}{" "}
           {props.department.departmentName}

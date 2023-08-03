@@ -1,29 +1,33 @@
+.allContainer {
+  height: 100vh;
+}
+
 .allUsersContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 50px;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+  width: 100wh;
+  margin-bottom: 40px;
 }
 
 .title {
   display: flex;
   align-items: center;
 }
-.mainManageUsersContainer {
-  min-height: 100vh;
-  margin: 30px;
-}
 
 .mainManagerUsers {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin-top: 50px;
+  justify-content: space-between;
+  max-height: calc(100vh - 73px);
 }
 
 .addUserBtnAndTitle {
   display: flex;
   justify-content: space-between;
+  padding: 30px;
 }
 
 .addUserBtn {
@@ -41,8 +45,12 @@
   background-color: #857770;
   color: white;
   width: 300px;
+  padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+  text-align: center;
+  margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 .whiteText {
