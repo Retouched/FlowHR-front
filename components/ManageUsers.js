@@ -5,10 +5,12 @@ import { faUserPlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import useToggle from "./use-toggle";
+import NavBar from "./NavBar";
 
 function ManageUsers() {
   const [isModalAddUserOpen, toggleIsModalAddUserOpen] = useToggle(false);
 
+  // DONNEES POUR AJOUTER UN COLLABORATEUR
   const [addUserFirstname, setAddUserFirstname] = useState("");
   const [addUserLastname, setAddUserLastname] = useState("");
   const [addUserPassword, setAddUserPassword] = useState("");
@@ -146,109 +148,109 @@ function ManageUsers() {
   });
 
   return (
-    <>
-      <div className={styles.mainManageUsersContainer}>
-        <div>NAVBAR</div>
-        <div className={styles.mainManagerUsers}>
-          {isModalAddUserOpen && (
-            <Modal title="Add user" handleDismiss={toggleIsModalAddUserOpen}>
-              <div className={styles.modalContainer}>
-                <div>Creation d'un collaborateur</div>
-                <input
-                  type="text"
-                  placeholder="firstname"
-                  id="addUserFirstname"
-                  value={addUserFirstname}
-                  onChange={(e) => setAddUserFirstname(e.target.value)}
-                ></input>
-                <input
-                  type="text"
-                  placeholder="lastname"
-                  id="addUserLastname"
-                  value={addUserLastname}
-                  onChange={(e) => setAddUserLastname(e.target.value)}
-                ></input>
-                <input
-                  type="text" // a changer en password pour mise en production
-                  placeholder="password"
-                  id="addUserPassword"
-                  value={addUserPassword}
-                  onChange={(e) => setAddUserPassword(e.target.value)}
-                ></input>
-                <input
-                  type="text"
-                  placeholder="email"
-                  id="addUserEmail"
-                  value={addUserEmail}
-                  onChange={(e) => setAddUserEmail(e.target.value)}
-                ></input>
-                <select
-                  name="selectedDepartment"
-                  value={addUserDepartment}
-                  onChange={(e) => setAddUserDepartment(e.target.value)}
-                >
-                  <option disabled value="placeholder">
-                    Pôle
-                  </option>
-                  {allDepartments}
-                </select>
-                <select
-                  name="selectedJob"
-                  value={addUserJob}
-                  onChange={(e) => setAddUserJob(e.target.value)}
-                >
-                  <option disabled value="placeholder">
-                    Poste
-                  </option>
-                  {allJobs}
-                </select>
-                <select
-                  name="selectedRole"
-                  value={addUserRole}
-                  onChange={(e) => setAddUserRole(e.target.value)}
-                >
-                  <option disabled value="placeholder">
-                    Rôle
-                  </option>
-                  {allRoles}
-                </select>
-                {addUserError && (
-                  <span className={styles.error}>
-                    Le collaborateur existe déjà.
-                  </span>
-                )}
-                <div className={styles.btnContainer}>
-                  <button onClick={toggleIsModalAddUserOpen}>ANNULER</button>
-                  <button onClick={() => handleAddUser()}>
-                    CREER LE COLLABORATEUR
-                  </button>
-                </div>
+    <div className={styles.allContainer}>
+      <NavBar />
+      {/*<div className={styles.mainManageUsersContainer}>*/}
+      <div className={styles.mainManagerUsers}>
+        {isModalAddUserOpen && (
+          <Modal title="Add user" handleDismiss={toggleIsModalAddUserOpen}>
+            <div className={styles.modalContainer}>
+              <div>Creation d'un collaborateur</div>
+              <input
+                type="text"
+                placeholder="firstname"
+                id="addUserFirstname"
+                value={addUserFirstname}
+                onChange={(e) => setAddUserFirstname(e.target.value)}
+              ></input>
+              <input
+                type="text"
+                placeholder="lastname"
+                id="addUserLastname"
+                value={addUserLastname}
+                onChange={(e) => setAddUserLastname(e.target.value)}
+              ></input>
+              <input
+                type="text" // a changer en password pour mise en production
+                placeholder="password"
+                id="addUserPassword"
+                value={addUserPassword}
+                onChange={(e) => setAddUserPassword(e.target.value)}
+              ></input>
+              <input
+                type="text"
+                placeholder="email"
+                id="addUserEmail"
+                value={addUserEmail}
+                onChange={(e) => setAddUserEmail(e.target.value)}
+              ></input>
+              <select
+                name="selectedDepartment"
+                value={addUserDepartment}
+                onChange={(e) => setAddUserDepartment(e.target.value)}
+              >
+                <option disabled value="placeholder">
+                  Pôle
+                </option>
+                {allDepartments}
+              </select>
+              <select
+                name="selectedJob"
+                value={addUserJob}
+                onChange={(e) => setAddUserJob(e.target.value)}
+              >
+                <option disabled value="placeholder">
+                  Poste
+                </option>
+                {allJobs}
+              </select>
+              <select
+                name="selectedRole"
+                value={addUserRole}
+                onChange={(e) => setAddUserRole(e.target.value)}
+              >
+                <option disabled value="placeholder">
+                  Rôle
+                </option>
+                {allRoles}
+              </select>
+              {addUserError && (
+                <span className={styles.error}>
+                  Le collaborateur existe déjà.
+                </span>
+              )}
+              <div className={styles.btnContainer}>
+                <button onClick={toggleIsModalAddUserOpen}>ANNULER</button>
+                <button onClick={() => handleAddUser()}>
+                  CREER LE COLLABORATEUR
+                </button>
               </div>
-            </Modal>
-          )}
-          <div className={styles.addUserBtnAndTitle}>
-            <button
-              className={styles.addUserBtn}
-              id="addUser"
-              onClick={toggleIsModalAddUserOpen}
-            >
-              <FontAwesomeIcon
-                icon={faUserPlus}
-                size="xl"
-                className={styles.userPlusIcon}
-              />
-              Ajouter un collaborateur
-            </button>
-            <div className={styles.title}>Gestion des utilisateurs</div>
-            <div className={styles.whiteText}>Texte pour mise en page</div>
-          </div>
-          <div className={styles.allUsersContainer}>{users}</div>
-          <button className={styles.backBtn} id="back to HR dashboard">
-            RETOUR A LA PAGE D'ACCUEIL
+            </div>
+          </Modal>
+        )}
+        <div className={styles.addUserBtnAndTitle}>
+          <button
+            className={styles.addUserBtn}
+            id="addUser"
+            onClick={toggleIsModalAddUserOpen}
+          >
+            <FontAwesomeIcon
+              icon={faUserPlus}
+              size="xl"
+              className={styles.userPlusIcon}
+            />
+            Ajouter un collaborateur
           </button>
+          <div className={styles.title}>Gestion des utilisateurs</div>
+          <div className={styles.whiteText}>Texte pour mise en page</div>
         </div>
+        <div className={styles.allUsersContainer}>{users}</div>
+        <button className={styles.backBtn} id="back to HR dashboard">
+          RETOUR A LA PAGE D'ACCUEIL
+        </button>
       </div>
-    </>
+      {/*</div>*/}
+    </div>
   );
 }
 
