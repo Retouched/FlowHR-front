@@ -150,7 +150,7 @@ function ManageUsers() {
   return (
     <div className={styles.allContainer}>
       <NavBar />
-      {/*<div className={styles.mainManageUsersContainer}>*/}
+
       <div className={styles.mainManagerUsers}>
         {isModalAddUserOpen && (
           <Modal title="Add user" handleDismiss={toggleIsModalAddUserOpen}>
@@ -249,7 +249,6 @@ function ManageUsers() {
           RETOUR A LA PAGE D'ACCUEIL
         </button>
       </div>
-      {/*</div>*/}
     </div>
   );
 }
