@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleXmark,
+  faHourglassHalf,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/HireRequestCard.module.css";
 
-function HireRequestCard(props) {
+function HireRequestCard() {
   return (
     <div className={styles.hireRequestContainer}>
       <div>ICON</div>
