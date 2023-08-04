@@ -23,7 +23,7 @@ export const userSlice = createSlice({
       state.value.role = action.payload.role;
       state.value.firstname = action.payload.firstname;
       state.value.job = action.payload.job;
-      state.value.connected = action.payload.connected;
+      state.value.connected = true;
     },
     logout: (state) => {
       state.value.token = null;
