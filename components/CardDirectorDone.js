@@ -4,16 +4,15 @@ import styles from "@/styles/CardDirector.module.css";
 import { useEffect, useState } from "react";
 
 function CardDirectorDone(props) {
-  //rechercher dans la collection HireRequests
-  const [numRequest, setNumRequest] = useState("");
-  const [dateHireRequest, setDateHireRequest] = useState("");
-  const [lastnameRequester, setLastnameRequester] = useState("");
-  const [firstnameRequester, setFirstnameRequester] = useState("");
-  const [emailRequester, setEmailRequester] = useState("placeholder");
-  const [job, setJob] = useState("");
-  const [role, setRole] = useState("");
+  //rechercher dans la collection HireRequests via un fetch
+  const [numRequest, setNumRequest] = useState(""); //hireRequest.numRequest
+  const [dateHireRequest, setDateHireRequest] = useState(""); //hireRequest.dateHireRequest
+  const [lastnameRequester, setLastnameRequester] = useState(""); //hireRequest.user_id.lastname
+  const [firstnameRequester, setFirstnameRequester] = useState(""); //hireRequest.user_id.firstname
+  const [emailRequester, setEmailRequester] = useState("placeholder"); //hireRequest.user_id.email
+  const [job, setJob] = useState(""); //hireRequest.jobs.jobName
 
-  //rechercher dans la collection users
+  //rechercher dans la collection users via le store
   const [dplRequestStatus, setDpRequestStatus] = useState(false);
   const [daflRequestStatus, setDafRequestStatus] = useState(false);
   const [pdglRequestStatus, setPdgRequestStatus] = useState(false);
