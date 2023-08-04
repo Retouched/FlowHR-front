@@ -1,0 +1,30 @@
+.welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.leftContainer{
+    margin-top: 20px;
+}
+
+.title{
+    display: flex;
+    margin-bottom: 40px;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 15px
+}
+
+.tabs{
+    border: solid 2px black;
+}
+
+.tab1{
+
+}

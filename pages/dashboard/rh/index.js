@@ -1,4 +1,4 @@
-import HomeHR from "../components/HomeHR";
+import HomeHR from "@/components/HomeHR";
 
 function HomeHRPage() {
   return <HomeHR />;

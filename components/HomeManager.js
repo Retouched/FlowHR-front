@@ -1,4 +1,4 @@
-import styles from "../styles/HomeManager.module.css";
+import styles from "@/styles/HomeManager.module.css";
 
 function HomeManager() {
   return (

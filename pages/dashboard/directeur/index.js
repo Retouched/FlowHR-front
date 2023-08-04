@@ -1,4 +1,4 @@
-import HomeDirector from "../components/HomeDirector";
+import HomeDirector from "@/components/HomeDirector";
 
 function HomeDirectorPage() {
   return <HomeDirector />;

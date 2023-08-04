@@ -4,7 +4,7 @@ import FocusLock from "react-focus-lock";
 import { RemoveScroll } from "react-remove-scroll";
 
 import VisuallyHidden from "./VisuallyHidden";
-import styles from "../styles/Modal.module.css";
+import styles from "@/styles/Modal.module.css";
 
 function Modal({ title, handleDismiss, children }) {
   const closeBtnRef = React.useRef();
