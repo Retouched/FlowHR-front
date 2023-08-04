@@ -9,9 +9,10 @@ import storage from "redux-persist/lib/storage";
 import { checkRole } from "@/pages/middlewares/checkRole";
 
 import user from "../reducers/user";
+import hireRequest from "../reducers/hireRequest";
 import { useEffect } from "react";
 
-const reducers = combineReducers({ user });
+const reducers = combineReducers({ user, hireRequest });
 const persistConfig = { key: "FlowHR", storage };
 const store = configureStore({
   reducer: persistReducer(persistConfig, reducers),

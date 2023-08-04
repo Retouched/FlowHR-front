@@ -9,8 +9,6 @@ function RequestDetails() {
       <NavBar />
       <div>INSERER LA PROGRESSION</div>
       <RequestDetailsCard />
-      <BtnCancelComponent />
-      <BtnNextComponent />
     </div>
   );
 }
