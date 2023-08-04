@@ -18,6 +18,7 @@ function Home() {
   const [signInPassword, setSignInPassword] = useState("");
   const [signInEmail, setSignInEmail] = useState("");
   const [isSignInError, setIsSignInError] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -42,11 +43,16 @@ function Home() {
           dispatch(
             login({
               lastname: signInLastname,
-              token: data.token,
+              firstname: data.firstname,
               email: signInEmail,
+              token: data.token,
+              departement: data.departementName,
+              job: data.job.jobName,
               role: data.role.roleName,
+              connected: isConnected,
             })
           );
+          setIsConnected(true);
           setSignInLastname("");
           setSignInEmail("");
           setSignInPassword("");

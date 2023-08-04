@@ -1,6 +1,8 @@
 .userContainer{
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .topCard{
@@ -11,29 +13,38 @@
 
 .numHire{
 padding:5px
-
 }
 
 .date{
-
+    padding:5px
 }
 
 .bottomCard{
-
+display: flex;
 }
 
 .icon{
-
+    margin: auto;
+    color: #018786;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
 }
 
 .containerInfos{
-
+display: flex;
+flex-direction: column;
+padding: 5px;
 }
 
 .infos{
+    padding: 5px;
 
 }
 
 .button{
-
+    cursor: pointer;
+    background-color: #018786;
+    border-radius: 5px;
+    padding: 5px;
 }

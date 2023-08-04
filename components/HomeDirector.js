@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Tabs } from "antd";
-import CardDirector from "./CardDirector";
+import CardDirectorDone from "./CardDirectorDone";
 
 const { TabPane } = Tabs;
 
@@ -25,18 +25,18 @@ function HomeDirector() {
         <NavBar />
         <h1 className={styles.welcome}>Bienvenue {user.lastname} </h1>
         <div className={styles.Container}>
-          <div className={styles.leftContainer}>
+          <div className={styles.componentsContainer}>
             <span className={styles.title}>Demandes d'autorisation</span>
             <Tabs defaultActiveKey="1" type="card" className={styles.tabs}>
               <TabPane tab="A traiter" key="1" className={styles.tab1}>
-                <CardDirector />
+                <CardDirectorDone />
               </TabPane>
               <TabPane tab="Traité" key="2" className={styles.tab2}>
                 <p>Tab content for "Traité" goes here.</p>
               </TabPane>
             </Tabs>
           </div>
-          <div className={styles.rightContainer}>
+          <div className={styles.componentsContainer}>
             <span className={styles.title}>Demandes d'évolution</span>
           </div>
         </div>
