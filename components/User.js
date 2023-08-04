@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import styles from "../styles/User.module.css";
+import styles from "@/styles/User.module.css";
 
 function User(props) {
   //INVERSE DATA FLOW AFIN D'UTILISER LA FONCTION HANDLE DELETE

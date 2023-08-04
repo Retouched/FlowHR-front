@@ -1,4 +1,4 @@
-import styles from "../styles/HomeHR.module.css";
+import styles from "@/styles/HomeHR.module.css";
 import NavBar from "./NavBar";
 
 function HomeHR() {

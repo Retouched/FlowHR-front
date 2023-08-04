@@ -1,4 +1,4 @@
-import styles from "../styles/HomeManager.module.css";
+import styles from "@/styles/HomeManager.module.css";
 import NavBar from "./NavBar";
 import HireRequestCard from "./HireRequestCard";
 

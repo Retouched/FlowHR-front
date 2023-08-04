@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "../styles/ManageUsers.module.css";
+import styles from "@/styles/ManageUsers.module.css";
 import User from "./User";
 import { faUserPlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";

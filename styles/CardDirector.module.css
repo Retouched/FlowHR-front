@@ -1,0 +1,39 @@
+.userContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.topCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.numHire{
+padding:5px
+
+}
+
+.date{
+
+}
+
+.bottomCard{
+
+}
+
+.icon{
+
+}
+
+.containerInfos{
+
+}
+
+.infos{
+
+}
+
+.button{
+
+}

@@ -1,9 +1,9 @@
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 import useToggle from "./use-toggle";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Modal from "./Modal";
-import { login, logout } from "../reducers/user";
+import { login, logout } from "@/reducers/user";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
@@ -52,11 +52,11 @@ function Home() {
           setSignInPassword("");
           setIsSignInError(false);
           if (data.role.roleName === "Manager") {
-            router.push("/homeManager"); // Redirection vers /HomeManager si rôle = manager
+            router.push("/dashboard/manager"); // Redirection vers /HomeManager si rôle = manager
           } else if (data.role.roleName === "RH") {
-            router.push("/homeHR"); // Redirection vers /HomeRH si rôle = RH
+            router.push("/dashboard/rh"); // Redirection vers /HomeRH si rôle = RH
           } else if (data.role.roleName === "Directeur") {
-            router.push("/homeDirector"); // Redirection vers /HomeDirecteur si rôle = directeur
+            router.push("/dashboard/directeur"); // Redirection vers /HomeDirecteur si rôle = directeur
           }
         } else {
           setIsSignInError(true); // Nom d'utilisateur ou mot de passe incorrect ou inexistant
@@ -64,15 +64,15 @@ function Home() {
       });
   };
 
-  useEffect(() => {
-    if (user.token && user.role === "Manager") {
-      router.push("/homeManager");
-    } else if (user.token && user.role === "RH") {
-      router.push("/homeHR");
-    } else if (user.token && user.role === "Directeur") {
-      router.push("/homeDirector");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user.token && user.role === "Manager") {
+  //     router.push("/dashboard/manager");
+  //   } else if (user.token && user.role === "RH") {
+  //     router.push("/dashboard/rh");
+  //   } else if (user.token && user.role === "Directeur") {
+  //     router.push("/dashboard/directeur");
+  //   }
+  // }, []);
 
   return (
     <div>

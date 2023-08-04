@@ -6,8 +6,10 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
+import { checkRole } from "@/pages/middlewares/checkRole";
 
 import user from "../reducers/user";
+import { useEffect } from "react";
 
 const reducers = combineReducers({ user });
 const persistConfig = { key: "FlowHR", storage };
@@ -18,13 +20,18 @@ const store = configureStore({
 });
 const persistor = persistStore(store);
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps, router }) {
+  useEffect(() => {
+    checkRole(store, router);
+  }, []);
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Head>
           <title>FlowHR</title>
         </Head>
+        {/* {checkRole(store)} */}
         <Component {...pageProps} />
       </PersistGate>
     </Provider>

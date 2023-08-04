@@ -1,4 +1,4 @@
-import ManageUsers from "../components/ManageUsers";
+import ManageUsers from "@/components/ManageUsers";
 
 function manageUsers() {
   return <ManageUsers />;

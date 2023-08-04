@@ -1,10 +1,10 @@
-import styles from "../styles/NavBar.module.css";
+import styles from "@/styles/NavBar.module.css";
 import { Popover, Button } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../reducers/user";
+import { logout } from "@/reducers/user";
 import { useRouter } from "next/router";
 
 function NavBar() {
