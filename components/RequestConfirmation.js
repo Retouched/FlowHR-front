@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import RequestContractCard from "./RequestContractCard";
 import RequestDetailsCard from "./RequestDetailsCard";
 import RequestWageCard from "./RequestWageCard";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
@@ -12,9 +13,61 @@ import BtnConfirmComponent from "./BtnConfirm";
 
 function RequestConfirmation() {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const hireRequest = useSelector((state) => state.hireRequest.value);
+  const user = useSelector((state) => state.user.value);
+  console.log("hireRequest: ", hireRequest);
+  console.log("user: ", user);
 
+  // ********** FINAL SUBMIT ********** !!!EN COURS!!!
   const handleFinalSubmit = () => {
-    router.push("/requestRedirection");
+    fetch("http://localhost:3000/hireRequests", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        numRequest: hireRequest.numRequest,
+        goalRequest: hireRequest.goalRequest,
+        nameReplacedPerson: hireRequest.nameReplacedPerson,
+        lastnameReplacedPerson: hireRequest.lastnameReplacedPerson,
+        job: hireRequest.job,
+        nexJob: hireRequest.newJob,
+        classification: hireRequest.classification,
+        firstnameManager: hireRequest.firstnameManager,
+        lastnameManager: hireRequest.lastnameManager,
+        department: hireRequest.department,
+        contractTypes: hireRequest.contractTypes,
+        dateHireRequest: hireRequest.dateHireRequest,
+        dpRequestStatus: hireRequest.dpRequestStatus,
+        drhRequestStatus: hireRequest.drhRequestStatus,
+        dafRequestStatus: hireRequest.dafRequestStatus,
+        pdgRequestStatus: hireRequest.pdgRequestStatus,
+        globalRequestStatus: hireRequest.globalRequestStatus,
+        dpComment: hireRequest.dpComment,
+        drhComment: hireRequest.drhComment,
+        dafComment: hireRequest.dafComment,
+        pdgComment: hireRequest.pdgComment,
+        pourcentageWorkTime: hireRequest.pourcentageWorkTime,
+        contractReasons: hireRequest.contractReasons,
+        startDateContract: hireRequest.startDateContract,
+        endDateContract: hireRequest.endDateContract,
+        durationContractDay: hireRequest.durationContractDay,
+        durationContractMonth: hireRequest.durationContractMonth,
+        minimumWage: hireRequest.minimumWage,
+        maximumWage: hireRequest.maximumWage,
+        monthlyVariableWage: hireRequest.monthlyVariableWage,
+        monthlyVariableWageAmount: hireRequest.monthlyVariableWageAmount,
+        annualVariableWage: hireRequest.annualVariableWage,
+        annualVariableWageAmount: hireRequest.annualVariableWageAmount,
+        moveAssist: hireRequest.moveAssist,
+        user_id: hireRequest.user_id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+    // Redirection
+    //router.push("/requestRedirection");
   };
 
   return (

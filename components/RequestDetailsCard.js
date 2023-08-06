@@ -14,7 +14,6 @@ function RequestDetailsCard() {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
-  console.log("hireRequest: ", hireRequest);
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addGoalRequest, setAddGoalRequest] = useState(hireRequest.goalRequest);

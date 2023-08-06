@@ -14,7 +14,6 @@ function RequestWageCard() {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
-  console.log("hireRequest: ", hireRequest);
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addMinimumWage, setAddMinimumWage] = useState(
@@ -46,7 +45,7 @@ function RequestWageCard() {
       <input
         type="text"
         placeholder="Salaire de base mensuel en €"
-        value={addMinimumWage}
+        defaultValue={hireRequest.minimumWage}
         onChange={(e) => setAddMinimumWage(e.target.value)}
       ></input>
       <span>€</span>
@@ -54,7 +53,7 @@ function RequestWageCard() {
       <input
         type="text"
         placeholder="Salaire de base mensuel en €"
-        value={addMaximumWage}
+        defaultValue={hireRequest.maximumWage}
         onChange={(e) => setAddMaximumWage(e.target.value)}
       ></input>
       <span>€</span>

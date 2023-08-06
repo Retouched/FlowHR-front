@@ -14,7 +14,6 @@ function RequestContractCard() {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
-  console.log("hireRequest: ", hireRequest);
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addPourcentageWorktime, setAddPourcentageWorkTime] = useState(

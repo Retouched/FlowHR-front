@@ -1,7 +1,10 @@
 import styles from "../styles/RequestRedirection.module.css";
 import NavBar from "./NavBar";
 
+import { useRouter } from "next/router";
+
 function RequestRedirection() {
+  const router = useRouter();
   return (
     <div className={styles.main}>
       <NavBar />
