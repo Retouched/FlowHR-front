@@ -1,0 +1,19 @@
+.main {
+  width: 100vw;
+}
+
+.cardsContainer {
+  display: flex;
+}
+
+.detailsCard {
+  flex-grow: 1;
+}
+
+.contractCard {
+  flex-grow: 1;
+}
+
+.wageCard {
+  flex-grow: 1;
+}
