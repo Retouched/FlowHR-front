@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/RequestWageCard.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,6 +34,10 @@ function RequestWageCard() {
 
   return (
     <div className={styles.wageCardContainer}>
+      <div className={styles.title}>
+        <FontAwesomeIcon icon={faEuroSign} size="xl" className={styles.euro} />
+        <h2>ELEMENTS DE REMUNERATION</h2>
+      </div>
       <span>Fourchette de rémunération mensuelle </span>
       <span>Salaire mensuel minimum </span>
       <input

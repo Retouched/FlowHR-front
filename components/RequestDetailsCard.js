@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/RequestDetailsCard.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,12 +28,6 @@ function RequestDetailsCard() {
   const [addUserDepartment, setAddUserDepartment] = useState(
     hireRequest.userDepartment
   );
-
-  // handleFirstSubmit
-  // créer un objet
-  // dispatch l'objet créer => attention au noms des variables
-  // coté reducer
-  // réceptionne l'objet et on boucle dessus
 
   const handleFirstSubmit = () => {
     const datasFirstSubmit = {
@@ -129,6 +124,14 @@ function RequestDetailsCard() {
 
   return (
     <div className={styles.main}>
+      <div className={styles.title}>
+        <FontAwesomeIcon
+          icon={faMessage}
+          size="xl"
+          className={styles.message}
+        />
+        <h2>DETAILS DE LA DEMANDE</h2>
+      </div>
       <div className={styles.inputContainer}>
         <span>Raison de la demande :</span>
         <select

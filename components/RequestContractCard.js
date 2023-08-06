@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../styles/RequestContractCard.module.css";
+import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addHireRequest } from "@/reducers/hireRequest";
@@ -29,6 +30,14 @@ function RequestContractCard() {
 
   return (
     <div>
+      <div className={styles.title}>
+        <FontAwesomeIcon
+          icon={faFileContract}
+          size="xl"
+          className={styles.contract}
+        />
+        <h2>TYPE DE CONTRAT</h2>
+      </div>
       <span>Temps de travail </span>
       <input
         type="text"
