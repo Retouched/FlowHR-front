@@ -1,0 +1,25 @@
+.main {
+  height: 100vh;
+}
+
+.imageAndTexts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 73px);
+  gap: 50px;
+}
+
+.btn {
+  width: 300px;
+  height: 80px;
+  background-color: #018786;
+  border-radius: 40px;
+  color: white;
+  font-size: 18px;
+}
+
+.smiley {
+  width: 200px;
+}
