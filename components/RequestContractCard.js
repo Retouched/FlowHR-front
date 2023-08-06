@@ -4,12 +4,14 @@ import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addHireRequest } from "@/reducers/hireRequest";
+import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 import BtnBack from "./BtnBack";
 
 function RequestContractCard() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
   console.log("hireRequest: ", hireRequest);
@@ -26,6 +28,8 @@ function RequestContractCard() {
     };
     dispatch(addHireRequest(datasSecondSubmit));
     console.log("datasSecondSubmit", datasSecondSubmit);
+    // Redirection
+    router.push("/requestWage");
   };
 
   return (

@@ -4,12 +4,14 @@ import styles from "../styles/RequestWageCard.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addHireRequest } from "@/reducers/hireRequest";
+import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 import BtnBack from "./BtnBack";
 
 function RequestWageCard() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
   console.log("hireRequest: ", hireRequest);
@@ -30,6 +32,7 @@ function RequestWageCard() {
     };
     dispatch(addHireRequest(datasThirdSubmit));
     console.log("datasThirdSubmit", datasThirdSubmit);
+    router.push("/requestConfirmation");
   };
 
   return (

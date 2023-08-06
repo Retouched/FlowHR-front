@@ -4,11 +4,14 @@ import styles from "../styles/RequestDetailsCard.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addHireRequest } from "@/reducers/hireRequest";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 
 function RequestDetailsCard() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
   console.log("hireRequest: ", hireRequest);
@@ -43,6 +46,8 @@ function RequestDetailsCard() {
     };
     dispatch(addHireRequest(datasFirstSubmit));
     console.log("datasFirstSubmit", datasFirstSubmit);
+    // Redirection
+    router.push("/requestContract");
   };
 
   // USE STATE POUR RECUPERATION DES LISTES EN BDD (POLES, POSTES, CLASSIFICATIONS, GOALREQUESTS...)

@@ -1,11 +1,11 @@
 import styles from "../styles/BtnNextAndConfirm.module.css";
 
-function BtnNextComponent() {
+function BtnConfirmComponent() {
   return (
     <button className={styles.btn} id="BtnNextComponent">
-      ETAPE SUIVANTE
+      CONFIRMER
     </button>
   );
 }
 
-export default BtnNextComponent;
+export default BtnConfirmComponent;
