@@ -1,0 +1,4 @@
+.wageCardContainer {
+  display: flex;
+  flex-direction: column;
+}

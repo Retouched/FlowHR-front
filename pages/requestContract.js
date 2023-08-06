@@ -4,4 +4,4 @@ function RequestContractPage() {
   return <RequestContract />;
 }
 
-export default RequestContract;
+export default RequestContractPage;
