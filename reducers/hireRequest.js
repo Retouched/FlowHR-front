@@ -36,7 +36,8 @@ const initialState = {
     annualVariableWage: false,
     annualVariableWageAmount: 0,
     moveAssist: false,
-    user_id: "",
+    annexDemand: "",
+    //user_id: "",
   },
 };
 

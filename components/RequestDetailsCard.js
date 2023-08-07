@@ -28,7 +28,7 @@ function RequestDetailsCard() {
   const [addFirstnameManager, setAddFirstnameManager] = useState("");
   const [addLastnameManager, setAddLastnameManager] = useState("");
   const [addUserDepartment, setAddUserDepartment] = useState(
-    hireRequest.userDepartment
+    hireRequest.department
   );
 
   const handleFirstSubmit = () => {
@@ -41,7 +41,7 @@ function RequestDetailsCard() {
       classification: addClassification,
       firstnameManager: addFirstnameManager,
       lastnameManager: addLastnameManager,
-      userDepartment: addUserDepartment,
+      department: addUserDepartment,
     };
     dispatch(addHireRequest(datasFirstSubmit));
     console.log("datasFirstSubmit", datasFirstSubmit);

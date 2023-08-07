@@ -3,7 +3,9 @@ import NavBar from "./NavBar";
 import RequestContractCard from "./RequestContractCard";
 import RequestDetailsCard from "./RequestDetailsCard";
 import RequestWageCard from "./RequestWageCard";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addHireRequest } from "@/reducers/hireRequest";
 import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
@@ -19,8 +21,55 @@ function RequestConfirmation() {
   console.log("hireRequest: ", hireRequest);
   console.log("user: ", user);
 
+  // DONNEES POUR AJOUTER UNE DEMANDE
+  // FIRST SUBMIT
+  const [addGoalRequest, setAddGoalRequest] = useState(hireRequest.goalRequest);
+  const [addNameReplacedPerson, setAddNameReplacedPerson] = useState("");
+  const [addLastnameReplacedPerson, setAddLastnameReplacedPerson] =
+    useState("");
+  const [addJob, setAddJob] = useState(hireRequest.job);
+  const [addNewJob, setAddNewJob] = useState("");
+  const [addClassification, setAddClassification] = useState(
+    hireRequest.classification
+  );
+  const [addFirstnameManager, setAddFirstnameManager] = useState("");
+  const [addLastnameManager, setAddLastnameManager] = useState("");
+  const [addUserDepartment, setAddUserDepartment] = useState(
+    hireRequest.userDepartment
+  );
+  // SECOND SUBMIT
+  const [addPourcentageWorktime, setAddPourcentageWorkTime] = useState(
+    hireRequest.pourcentageWorktime || ""
+  ); // ajout du "|| "" " afin d'enlever l'erreur => uncontrolled input
+  // THIRD SUBMIT
+  const [addMinimumWage, setAddMinimumWage] = useState(
+    hireRequest.addMinimumWage || ""
+  ); // ajout du "|| "" " afin d'enlever l'erreur => uncontrolled input
+  const [addMaximumWage, setAddMaximumWage] = useState(
+    hireRequest.addMaximumWage || ""
+  ); // ajout du "|| "" " afin d'enlever l'erreur => uncontrolled input
+
   // ********** FINAL SUBMIT ********** !!!EN COURS!!!
   const handleFinalSubmit = () => {
+    //Penser a rajouter les éléments manquants du second et thirs submit
+    const datasFinalSubmit = {
+      goalRequest: addGoalRequest,
+      nameReplacedPerson: addNameReplacedPerson,
+      lastnameReplacedPerson: addLastnameReplacedPerson,
+      job: addJob,
+      newJob: addNewJob,
+      classification: addClassification,
+      firstnameManager: addFirstnameManager,
+      lastnameManager: addLastnameManager,
+      userDepartment: addUserDepartment,
+      pourcentageWorktime: addPourcentageWorktime,
+      minimumWage: addMinimumWage,
+      maximumWage: addMaximumWage,
+    };
+
+    dispatch(addHireRequest(datasFinalSubmit));
+    console.log("datasFinalSubmit: ", datasFinalSubmit);
+
     fetch("http://localhost:3000/hireRequests", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,22 +79,13 @@ function RequestConfirmation() {
         nameReplacedPerson: hireRequest.nameReplacedPerson,
         lastnameReplacedPerson: hireRequest.lastnameReplacedPerson,
         job: hireRequest.job,
-        nexJob: hireRequest.newJob,
+        newJob: hireRequest.newJob,
         classification: hireRequest.classification,
         firstnameManager: hireRequest.firstnameManager,
         lastnameManager: hireRequest.lastnameManager,
         department: hireRequest.department,
         contractTypes: hireRequest.contractTypes,
         dateHireRequest: hireRequest.dateHireRequest,
-        dpRequestStatus: hireRequest.dpRequestStatus,
-        drhRequestStatus: hireRequest.drhRequestStatus,
-        dafRequestStatus: hireRequest.dafRequestStatus,
-        pdgRequestStatus: hireRequest.pdgRequestStatus,
-        globalRequestStatus: hireRequest.globalRequestStatus,
-        dpComment: hireRequest.dpComment,
-        drhComment: hireRequest.drhComment,
-        dafComment: hireRequest.dafComment,
-        pdgComment: hireRequest.pdgComment,
         pourcentageWorkTime: hireRequest.pourcentageWorkTime,
         contractReasons: hireRequest.contractReasons,
         startDateContract: hireRequest.startDateContract,
@@ -59,7 +99,8 @@ function RequestConfirmation() {
         annualVariableWage: hireRequest.annualVariableWage,
         annualVariableWageAmount: hireRequest.annualVariableWageAmount,
         moveAssist: hireRequest.moveAssist,
-        user_id: hireRequest.user_id,
+        annexDemand: hireRequest.annexDemand,
+        //user_id: hireRequest.user_id,
       }),
     })
       .then((response) => response.json())
