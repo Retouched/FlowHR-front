@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Tabs } from "antd";
 import CardDirectorDone from "./CardDirectorDone";
+import CardDirectorUndone from "./CardDirectorUndone";
 
 const { TabPane } = Tabs;
 
@@ -32,7 +33,7 @@ function HomeDirector() {
                 <CardDirectorDone />
               </TabPane>
               <TabPane tab="Traité" key="2" className={styles.tab2}>
-                <p>Tab content for "Traité" goes here.</p>
+                <CardDirectorUndone />
               </TabPane>
             </Tabs>
           </div>
