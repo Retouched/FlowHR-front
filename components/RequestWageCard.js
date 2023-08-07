@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 import BtnBack from "./BtnBack";
+import { Checkbox } from "antd";
 
 function RequestWageCard() {
   const router = useRouter();
@@ -57,6 +58,26 @@ function RequestWageCard() {
         onChange={(e) => setAddMaximumWage(e.target.value)}
       ></input>
       <span>€</span>
+      <div>
+        <span>Variable mensuel </span>
+        <Checkbox />
+      </div>
+      <input
+        type="text"
+        placeholder="Variable mensuel en €"
+        defaultValue={hireRequest.maximumWage}
+        onChange={(e) => setAddMaximumWage(e.target.value)}
+      ></input>
+      <div>
+        <span>Variable annuel </span>
+        <Checkbox />
+      </div>
+      <input
+        type="text"
+        placeholder="Variable annuel en €"
+        defaultValue={hireRequest.maximumWage}
+        onChange={(e) => setAddMaximumWage(e.target.value)}
+      ></input>
       <div className={styles.btnContainer}>
         <BtnCancelComponent />
         <span>

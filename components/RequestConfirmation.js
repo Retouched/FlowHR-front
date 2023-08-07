@@ -100,7 +100,16 @@ function RequestConfirmation() {
         annualVariableWageAmount: hireRequest.annualVariableWageAmount,
         moveAssist: hireRequest.moveAssist,
         annexDemand: hireRequest.annexDemand,
-        //user_id: hireRequest.user_id,
+        dpRequestStatus: hireRequest.dpRequestStatus,
+        drhRequestStatus: hireRequest.drhRequestStatus,
+        dafRequestStatus: hireRequest.dafRequestStatus,
+        pdgRequestStatus: hireRequest.pdgRequestStatus,
+        globalRequestStatus: hireRequest.globalRequestStatus,
+        dpComment: hireRequest.dpComment,
+        drhComment: hireRequest.drhComment,
+        dafComment: hireRequest.dafComment,
+        pdgComment: hireRequest.pdgComment,
+        user: hireRequest.user,
       }),
     })
       .then((response) => response.json())
