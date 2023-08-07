@@ -3,7 +3,12 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/CardDirector.module.css";
 import { useEffect, useState } from "react";
 
-function CardDirectorDone(props) {
+function formatDate(dateString) {
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  return new Date(dateString).toLocaleDateString("fr-FR", options);
+}
+
+function CardDirectorDone() {
   const [hireRequestData, setHireRequestData] = useState([]);
 
   //METTRE DANS "Traité" OU DANS "À traiter"
@@ -13,6 +18,7 @@ function CardDirectorDone(props) {
     fetch("http://localhost:3000/hireRequests")
       .then((response) => response.json())
       .then((data) => {
+        console.log("data:", data);
         setHireRequestData(data.allHireRequests);
       });
   }, []);

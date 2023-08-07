@@ -6,8 +6,6 @@ import { Tabs } from "antd";
 import CardDirectorDone from "./CardDirectorDone";
 import CardDirectorUndone from "./CardDirectorUndone";
 
-const { TabPane } = Tabs;
-
 function HomeDirector() {
   const user = useSelector((state) => state.user.value);
 

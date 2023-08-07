@@ -8,7 +8,7 @@ function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString("fr-FR", options);
 }
 
-function CardDirectorUndone(props) {
+function CardDirectorUndone() {
   const [hireRequestData, setHireRequestData] = useState([]);
 
   //METTRE DANS "Traité" OU DANS "À traiter"

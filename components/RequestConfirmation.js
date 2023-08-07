@@ -109,7 +109,7 @@ function RequestConfirmation() {
         drhComment: hireRequest.drhComment,
         dafComment: hireRequest.dafComment,
         pdgComment: hireRequest.pdgComment,
-        user: hireRequest.user,
+        user: user.token,
       }),
     })
       .then((response) => response.json())
