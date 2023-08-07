@@ -53,6 +53,18 @@ export const userSlice = createSlice({
       console.log("action.payload: ", action.payload);
       console.log("state.value: ", { ...state.value });
     },
+    switchHireRequestDpStatusToProcessed: (state) => {
+      state.value.dpRequestStatus = true;
+    },
+    switchHireRequestDrhStatusToProcessed: (state) => {
+      state.value.drhRequestStatus = true;
+    },
+    switchHireRequestDafStatusToProcessed: (state) => {
+      state.value.dafRequestStatus = true;
+    },
+    switchHireRequestPdgStatusToProcessed: (state) => {
+      state.value.pdgRequestStatus = true;
+    },
   },
 });
 

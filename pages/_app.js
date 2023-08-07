@@ -32,7 +32,6 @@ function App({ Component, pageProps, router }) {
         <Head>
           <title>FlowHR</title>
         </Head>
-        {/* {checkRole(store)} */}
         <Component {...pageProps} />
       </PersistGate>
     </Provider>
