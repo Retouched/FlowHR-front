@@ -206,7 +206,7 @@ function RequestDetailsCard() {
         <span>Nom du manager :</span>
         <input
           type="text"
-          placeholder="Nom du nouveau poste"
+          placeholder="Nom du manager"
           id="lastnameManager"
           defaultValue={hireRequest.lastnameManager}
           onChange={(e) => setAddLastnameManager(e.target.value)}

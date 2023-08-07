@@ -19,11 +19,64 @@ function RequestContractCard() {
   const [addPourcentageWorktime, setAddPourcentageWorkTime] = useState(
     hireRequest.pourcentageWorktime || ""
   ); // ajout du "|| "" " afin d'enlever l'erreur => uncontrolled input
+  const [addContractType, setAddContractType] = useState(
+    hireRequest.contractType
+  );
+  const [addContractReason, setAddContractReason] = useState(
+    hireRequest.contractReason
+  );
+  const [addStartDateContract, setAddStartDateContract] = useState(new Date());
+  const [addEndDateContract, setAddEndDateContract] = useState(new Date());
+  const [addDurationContractDay, setAddDurationContractDay] = useState(null);
+
+  // USE STATE POUR RECUPERATION DES LISTES EN BDD (TYPE CONTRAT, MOTIF CONTRAT)
+  const [contractType, setContractType] = useState([]);
+  const [contractReason, setContractReason] = useState([]);
+
+  // RECUPERATION DES CONTRACT TYPES POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/contractTypes")
+      .then((response) => response.json())
+      .then((data) => {
+        setContractType(data.allContractTypes);
+      });
+  }, []);
+
+  const allContractTypes = contractType.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.contractTypeName}
+      </option>
+    );
+  });
+
+  // RECUPERATION DES CONTRACT REASONS POUR INSERTION DANS UNE LISTE
+  useEffect(() => {
+    fetch("http://localhost:3000/contractReasons")
+      .then((response) => response.json())
+      .then((data) => {
+        setContractReason(data.allContractReasons);
+      });
+  }, []);
+
+  const allContractReasons = contractReason.map((data, i) => {
+    return (
+      <option key={i} value={data._id}>
+        {data.contractReasonName}
+      </option>
+    );
+  });
 
   // AU CLIC SUR ETAPE SUIVANTE
   const handleSecondSubmit = () => {
     const datasSecondSubmit = {
       pourcentageWorktime: addPourcentageWorktime,
+      contractType: addContractType,
+      contractReason: addContractReason,
+      startDateContract: addStartDateContract,
+      endDateContract: addEndDateContract,
+      durationContractDay: addDurationContractDay,
+      durationContractMonth: addDurationContractMonth,
     };
     dispatch(addHireRequest(datasSecondSubmit));
     console.log("datasSecondSubmit", datasSecondSubmit);
@@ -32,7 +85,7 @@ function RequestContractCard() {
   };
 
   return (
-    <div>
+    <div className={styles.main}>
       <div className={styles.title}>
         <FontAwesomeIcon
           icon={faFileContract}
@@ -41,6 +94,17 @@ function RequestContractCard() {
         />
         <h2>TYPE DE CONTRAT</h2>
       </div>
+      <span>Choisir le type de contrat </span>
+      <select
+        name="selectedContractType"
+        value={addContractType}
+        onChange={(e) => setAddContractType(e.target.value)}
+      >
+        <option disabled value="placeholder">
+          Raison de la demande
+        </option>
+        {allContractTypes}
+      </select>
       <span>Temps de travail </span>
       <input
         type="text"
@@ -49,6 +113,39 @@ function RequestContractCard() {
         onChange={(e) => setAddPourcentageWorkTime(e.target.value)}
       ></input>
       <span>%</span>
+      <span>Choisir le motif de contrat </span>
+      <select
+        name="selectedContractReason"
+        value={addContractReason}
+        onChange={(e) => setAddContractReason(e.target.value)}
+      >
+        <option disabled value="placeholder">
+          Motif du contrat
+        </option>
+        {allContractReasons}
+      </select>
+      <span>Date de début de contrat </span>
+      <input
+        type="date"
+        placeholder="jj/mm/aaaa"
+        onChange={(e) => {
+          setAddStartDateContract(e.target.value);
+        }}
+      ></input>
+      <span>Date de fin de contrat </span>
+      <input
+        type="date"
+        placeholder="jj/mm/aaaa"
+        onChange={(e) => {
+          setAddEndDateContract(e.target.value);
+        }}
+      ></input>
+      <span>Durée du contrat</span>
+      <input
+        type="text"
+        placeholder="Durée du contrat"
+        //A rajouter : nbr mois et nbr jours en automatique
+      ></input>
       <div className={styles.btnContainer}>
         <BtnCancelComponent />
         <span>
