@@ -3,16 +3,12 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/CardDirector.module.css";
 import { useEffect, useState } from "react";
 
-function CardDirectorUndone(props) {
-  //rechercher dans la collection HireRequests via un fetch
-  const [numRequest, setNumRequest] = useState(""); //hireRequest.numRequest
-  const [dateHireRequest, setDateHireRequest] = useState(""); //hireRequest.dateHireRequest
-  const [lastnameRequester, setLastnameRequester] = useState(""); //hireRequest.user_id.lastname
-  const [firstnameRequester, setFirstnameRequester] = useState(""); //hireRequest.user_id.firstname
-  const [emailRequester, setEmailRequester] = useState(""); //hireRequest.user_id.email
-  const [job, setJob] = useState(""); //hireRequest.jobs.jobName
-  const [dpRequestStatus, setDpRequestStatus] = useState(false); //hireRequest.dpRequestStatus
+function formatDate(dateString) {
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  return new Date(dateString).toLocaleDateString("fr-FR", options);
+}
 
+function CardDirectorUndone(props) {
   const [hireRequestData, setHireRequestData] = useState([]);
 
   //METTRE DANS "Traité" OU DANS "À traiter"
@@ -35,7 +31,9 @@ function CardDirectorUndone(props) {
             <span className={styles.numHire}>
               demande d'autorisation n°{data.numRequest}
             </span>
-            <span className={styles.date}>Reçu le: {data.dateHireRequest}</span>
+            <span className={styles.date}>
+              Reçu le: {formatDate(data.dateHireRequest)}
+            </span>
           </div>
           <div className={styles.bottomCard}>
             <FontAwesomeIcon

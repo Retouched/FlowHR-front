@@ -20,6 +20,21 @@ function HomeDirector() {
   //     });
   // }, []);
 
+  const items = [
+    {
+      key: "1",
+      label: "À traiter",
+      children: <CardDirectorUndone />,
+    },
+    {
+      key: "2",
+      label: "Traité",
+      children: <CardDirectorDone />,
+    },
+  ];
+
+  const onChange = (key) => {};
+
   return (
     <div>
       <main className={styles.main}>
@@ -28,14 +43,13 @@ function HomeDirector() {
         <div className={styles.Container}>
           <div className={styles.componentsContainer}>
             <span className={styles.title}>Demandes d'autorisation</span>
-            <Tabs defaultActiveKey="1" type="card" className={styles.tabs}>
-              <TabPane tab="A traiter" key="1" className={styles.tab1}>
-                <CardDirectorDone />
-              </TabPane>
-              <TabPane tab="Traité" key="2" className={styles.tab2}>
-                <CardDirectorUndone />
-              </TabPane>
-            </Tabs>
+            <Tabs
+              defaultActiveKey="1"
+              items={items}
+              type="card"
+              className={styles.tabs}
+              onChange={onChange}
+            />
           </div>
           <div className={styles.componentsContainer}>
             <span className={styles.title}>Demandes d'évolution</span>

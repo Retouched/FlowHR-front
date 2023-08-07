@@ -28,6 +28,8 @@ function RequestContractCard() {
   const [addStartDateContract, setAddStartDateContract] = useState(new Date());
   const [addEndDateContract, setAddEndDateContract] = useState(new Date());
   const [addDurationContractDay, setAddDurationContractDay] = useState(null);
+  const [addDurationContractMonth, setAddDurationContractMonth] =
+    useState(null);
 
   // USE STATE POUR RECUPERATION DES LISTES EN BDD (TYPE CONTRAT, MOTIF CONTRAT)
   const [contractType, setContractType] = useState([]);
