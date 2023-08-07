@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 import BtnBack from "./BtnBack";
-import { Checkbox } from "antd";
+import { Checkbox, Switch } from "antd";
 
 function RequestWageCard() {
   const router = useRouter();
@@ -23,12 +23,35 @@ function RequestWageCard() {
   const [addMaximumWage, setAddMaximumWage] = useState(
     hireRequest.addMaximumWage || ""
   ); // ajout du "|| "" " afin d'enlever l'erreur => uncontrolled input
+  const [addMonthlyVariableWage, setAddMonthlyVariableWage] = useState(false);
+  const [addAnnualVariableWage, setAddAnnualVariableWage] = useState(false);
+  const [addMonthlyVariableWageAmount, setAddMonthlyVariableWageAmount] =
+    useState(hireRequest.monthlyVariableWageAmount || "");
+  const [addAnnualVariableWageAmount, setAddAnnualVariableWageAmount] =
+    useState(hireRequest.annualVariableWageAmount || "");
+  const [addMooveAssist, setAddMooveAssist] = useState(false);
+  const [addAnnexDemand, setAddAnnexDemand] = useState("");
+
+  // AU CLIC SUR CHECKBOX & SWITCH
+  const handleClickOnMonthlyVariableWage = () => {
+    setAddMonthlyVariableWage(!addMonthlyVariableWage);
+  };
+  const handleClickOnAnnualVariableWage = () => {
+    setAddAnnualVariableWage(!addAnnualVariableWage);
+  };
+  const handleSwitchOnAnnualVariableWage = () => {
+    setAddMooveAssist(!addMooveAssist);
+  };
 
   // AU CLIC SUR ETAPE SUIVANTE
   const handleThirdSubmit = () => {
     const datasThirdSubmit = {
       minimumWage: addMinimumWage,
       maximumWage: addMaximumWage,
+      monthlyVariableWage: addMonthlyVariableWage,
+      annualVariableWage: addAnnualVariableWage,
+      mooveAssist: addMooveAssist,
+      annexDemand: addAnnexDemand,
     };
     dispatch(addHireRequest(datasThirdSubmit));
     console.log("datasThirdSubmit", datasThirdSubmit);
@@ -60,23 +83,43 @@ function RequestWageCard() {
       <span>€</span>
       <div>
         <span>Variable mensuel </span>
-        <Checkbox />
+        <input
+          type="checkbox"
+          checked={addMonthlyVariableWage}
+          onChange={handleClickOnMonthlyVariableWage}
+        />
       </div>
       <input
         type="text"
         placeholder="Variable mensuel en €"
-        defaultValue={hireRequest.maximumWage}
-        onChange={(e) => setAddMaximumWage(e.target.value)}
+        defaultValue={hireRequest.monthlyVariableWageAmount}
+        onChange={(e) => setAddMonthlyVariableWageAmount(e.target.value)}
       ></input>
       <div>
         <span>Variable annuel </span>
-        <Checkbox />
+        <input
+          type="checkbox"
+          checked={addAnnualVariableWage}
+          onChange={handleClickOnAnnualVariableWage}
+        />
       </div>
       <input
         type="text"
         placeholder="Variable annuel en €"
-        defaultValue={hireRequest.maximumWage}
-        onChange={(e) => setAddMaximumWage(e.target.value)}
+        defaultValue={hireRequest.annualVariableWageAmount}
+        onChange={(e) => setAddAnnualVariableWageAmount(e.target.value)}
+      ></input>
+      <span>Accompagnement déménagement </span>
+      <Switch
+        checked={addMooveAssist}
+        onChange={handleSwitchOnAnnualVariableWage}
+      />
+      <span>Demande annexe </span>
+      <input
+        type="text"
+        placeholder="Demande annexe"
+        defaultValue={hireRequest.annexDemand}
+        onChange={(e) => setAddAnnexDemand(e.target.value)}
       ></input>
       <div className={styles.btnContainer}>
         <BtnCancelComponent />
