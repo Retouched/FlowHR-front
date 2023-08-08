@@ -32,7 +32,9 @@ function CardDirectorDone() {
             <span className={styles.numHire}>
               demande d'autorisation n°{data.numRequest}
             </span>
-            <span className={styles.date}>Reçu le: {data.dateHireRequest}</span>
+            <span className={styles.date}>
+              Reçu le: {formatDate(data.dateHireRequest)}
+            </span>
           </div>
           <div className={styles.bottomCard}>
             <FontAwesomeIcon
