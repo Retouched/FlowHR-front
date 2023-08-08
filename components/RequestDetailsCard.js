@@ -17,6 +17,7 @@ function RequestDetailsCard() {
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addGoalRequest, setAddGoalRequest] = useState(hireRequest.goalRequest);
+
   const [addNameReplacedPerson, setAddNameReplacedPerson] = useState("");
   const [addLastnameReplacedPerson, setAddLastnameReplacedPerson] =
     useState("");
@@ -61,6 +62,9 @@ function RequestDetailsCard() {
       .then((response) => response.json())
       .then((data) => {
         setGoalRequests(data.allGoalRequests);
+        if (!hireRequest.goalRequest) {
+          setAddGoalRequest(data.allGoalRequests[0]._id);
+        }
       });
   }, []);
 
@@ -78,6 +82,9 @@ function RequestDetailsCard() {
       .then((response) => response.json())
       .then((data) => {
         setJobs(data.allJobs);
+        if (!hireRequest.addJob) {
+          setAddJob(data.allJobs[0]._id);
+        }
       });
   }, []);
 
@@ -95,6 +102,9 @@ function RequestDetailsCard() {
       .then((response) => response.json())
       .then((data) => {
         setClassifications(data.allClassifications);
+        if (!hireRequest.addClassification) {
+          setAddClassification(data.allClassifications[0]._id);
+        }
       });
   }, []);
 
@@ -112,8 +122,12 @@ function RequestDetailsCard() {
       .then((response) => response.json())
       .then((data) => {
         setDepartments(data.allDepartments);
+        if (!hireRequest.addUserDepartment) {
+          setAddUserDepartment(data.allDepartments[0]._id);
+        }
       });
   }, []);
+  console.log(addJob);
 
   const allDepartments = departments.map((data, i) => {
     return (
@@ -140,12 +154,10 @@ function RequestDetailsCard() {
         <span>Raison de la demande :</span>
         <select
           name="selectedGoalRequest"
-          value={addGoalRequest}
+          placeholder="ezez"
+          //value={addGoalRequest}
           onChange={(e) => setAddGoalRequest(e.target.value)}
         >
-          <option disabled value="placeholder">
-            Raison de la demande
-          </option>
           {allGoalRequests}
         </select>
         <span>Identité de la personne remplacée :</span>
