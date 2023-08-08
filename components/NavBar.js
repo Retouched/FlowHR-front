@@ -5,6 +5,7 @@ import { faUser, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/reducers/user";
+import { resetStore } from "@/reducers/hireRequest";
 import { useRouter } from "next/router";
 
 function NavBar() {
@@ -13,6 +14,7 @@ function NavBar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    dispatch(resetStore());
     dispatch(logout());
     router.push("/"); // Redirection vers Signin
   };

@@ -41,6 +41,9 @@ function RequestContractCard() {
       .then((response) => response.json())
       .then((data) => {
         setContractType(data.allContractTypes);
+        if (!hireRequest.addContractType) {
+          setAddContractType(data.allContractTypes[0]._id);
+        }
       });
   }, []);
 
@@ -58,6 +61,9 @@ function RequestContractCard() {
       .then((response) => response.json())
       .then((data) => {
         setContractReason(data.allContractReasons);
+        if (!hireRequest.addContractReason) {
+          setAddContractReason(data.allContractReasons[0]._id);
+        }
       });
   }, []);
 

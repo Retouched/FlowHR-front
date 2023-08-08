@@ -65,8 +65,11 @@ export const userSlice = createSlice({
     switchHireRequestPdgStatusToProcessed: (state) => {
       state.value.pdgRequestStatus = true;
     },
+    resetStore: () => {
+      return initialState;
+    },
   },
 });
 
-export const { addHireRequest } = userSlice.actions;
+export const { addHireRequest, resetStore } = userSlice.actions;
 export default userSlice.reducer;
