@@ -25,8 +25,12 @@ function RequestContractCard() {
   const [addContractReason, setAddContractReason] = useState(
     hireRequest.contractReason
   );
-  const [addStartDateContract, setAddStartDateContract] = useState(new Date());
-  const [addEndDateContract, setAddEndDateContract] = useState(new Date());
+  const [addStartDateContract, setAddStartDateContract] = useState(
+    hireRequest.startDateContract
+  );
+  const [addEndDateContract, setAddEndDateContract] = useState(
+    hireRequest.endDateContract
+  );
   const [addDurationContractDay, setAddDurationContractDay] = useState(null);
   const [addDurationContractMonth, setAddDurationContractMonth] =
     useState(null);
@@ -34,6 +38,22 @@ function RequestContractCard() {
   // USE STATE POUR RECUPERATION DES LISTES EN BDD (TYPE CONTRAT, MOTIF CONTRAT)
   const [contractType, setContractType] = useState([]);
   const [contractReason, setContractReason] = useState([]);
+
+  // FONCTION NBR MOIS ENTRE DEUX DATES
+  function getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract) {
+    const nbrMonths =
+      (new Date(addEndDateContract).getFullYear() -
+        new Date(addStartDateContract).getFullYear()) *
+        12 -
+      new Date(addStartDateContract).getMonth() +
+      new Date(addEndDateContract).getMonth();
+
+    setAddDurationContractMonth(nbrMonths);
+  }
+  // Déclanchement de la fonction lorsqu'on modifie les dates
+  useEffect(() => {
+    getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract);
+  }, [addStartDateContract, addEndDateContract]);
 
   // RECUPERATION DES CONTRACT TYPES POUR INSERTION DANS UNE LISTE
   useEffect(() => {
@@ -51,6 +71,7 @@ function RequestContractCard() {
       </option>
     );
   });
+  console.log("date: ", addStartDateContract);
 
   // RECUPERATION DES CONTRACT REASONS POUR INSERTION DANS UNE LISTE
   useEffect(() => {
@@ -130,6 +151,7 @@ function RequestContractCard() {
       <input
         type="date"
         placeholder="jj/mm/aaaa"
+        value={addStartDateContract}
         onChange={(e) => {
           setAddStartDateContract(e.target.value);
         }}
@@ -138,16 +160,13 @@ function RequestContractCard() {
       <input
         type="date"
         placeholder="jj/mm/aaaa"
+        value={addEndDateContract}
         onChange={(e) => {
           setAddEndDateContract(e.target.value);
         }}
       ></input>
       <span>Durée du contrat</span>
-      <input
-        type="text"
-        placeholder="Durée du contrat"
-        //A rajouter : nbr mois et nbr jours en automatique
-      ></input>
+      <span>{addDurationContractMonth} mois</span>
       <div className={styles.btnContainer}>
         <BtnCancelComponent />
         <span>

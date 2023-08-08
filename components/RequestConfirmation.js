@@ -119,7 +119,7 @@ function RequestConfirmation() {
     // Redirection
     //router.push("/requestRedirection");
   };
-
+  console.log("date store: ", hireRequest.startDateContract);
   return (
     <div className={styles.main}>
       <NavBar />
