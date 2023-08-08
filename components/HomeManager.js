@@ -4,11 +4,18 @@ import HireRequestCard from "./HireRequestCard";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 function HomeManager() {
   // PREVOIR UNE BOUCLE POUR FAIRE APPARAITRE LES 3 DERNIERES HIRE REQUESTS DU MANAGER
 
   const user = useSelector((state) => state.user.value);
+  const router = useRouter();
+
+  // AU CLIC REDIRECTION VERS NOUVELLE DEMANDE
+  const handleNewHireRequest = () => {
+    router.push("/requestDetails");
+  };
 
   return (
     <div>
@@ -19,6 +26,7 @@ function HomeManager() {
           <button
             className={styles.newHireRequestBtn}
             id="make a new hire request"
+            onClick={() => handleNewHireRequest()}
           >
             Demande d'autorisation d'embauche
           </button>
