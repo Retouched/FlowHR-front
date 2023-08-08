@@ -61,7 +61,14 @@ function NavBar() {
 
   return (
     <nav className={styles.navBar}>
-      <img src="/logo.png" alt="Logo" className={styles.logo} />
+      <img
+        src="/logo.png"
+        alt="Logo"
+        className={styles.logo}
+        onClick={() => {
+          router.push(`/dashboard/${user.role.toLowerCase()}`);
+        }}
+      />
       <Popover placement="topRight" content={popoverContent} trigger="click">
         <Button
           style={{
