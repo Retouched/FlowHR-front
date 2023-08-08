@@ -12,6 +12,7 @@ function NavBar() {
   const user = useSelector((state) => state.user.value);
   const router = useRouter();
   const dispatch = useDispatch();
+  const hasRole = user.role;
 
   const handleLogout = () => {
     dispatch(resetStore());
@@ -21,20 +22,35 @@ function NavBar() {
 
   const popoverContent = (
     <div className={styles.popoverContent}>
-      <div className={styles.optionContainer}>
+      <div
+        className={styles.optionContainer}
+        onClick={() => {
+          router.push(`/dashboard/${user.role.toLowerCase()}`);
+        }}
+      >
         <span className="Dashboard">Accueil</span>
       </div>
-      {user.role !== "Directeur" && (
+      {/* {user.role !== "Directeur" && (
         <div className={styles.optionContainer}>
           <span className="Dashboard">Mon Tableau de bord</span>
         </div>
-      )}
+      )} */}
       {user.role === "RH" && (
-        <div className={styles.optionContainer}>
+        <div
+          className={styles.optionContainer}
+          onClick={() => {
+            router.push("/dashboard/rh/manageUsers");
+          }}
+        >
           <span className="Add user">Ajouter un collaborateur</span>
         </div>
       )}
-      <div className={styles.optionContainer}>
+      <div
+        className={styles.optionContainer}
+        onClick={() => {
+          router.push("/requestDetails");
+        }}
+      >
         <span className="New hire req">Nouvelle demande d'ambauche</span>
       </div>
       <div className={styles.optionContainer} onClick={() => handleLogout()}>
