@@ -39,6 +39,25 @@ function RequestContractCard() {
   const [contractType, setContractType] = useState([]);
   const [contractReason, setContractReason] = useState([]);
 
+  // FONCTION NBR MOIS ENTRE DEUX DATES
+  function getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract) {
+    const nbrMonths =
+      (new Date(addEndDateContract).getFullYear() -
+        new Date(addStartDateContract).getFullYear()) *
+        12 -
+      new Date(addStartDateContract).getMonth() +
+      new Date(addEndDateContract).getMonth();
+
+    setAddDurationContractMonth(nbrMonths);
+  }
+
+  //
+  useEffect(() => {
+    getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract);
+  }, [addStartDateContract, addEndDateContract]);
+
+  //getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract);
+  //console.log("addDurationContractMonth:", addDurationContractMonth);
   // RECUPERATION DES CONTRACT TYPES POUR INSERTION DANS UNE LISTE
   useEffect(() => {
     fetch("http://localhost:3000/contractTypes")
@@ -150,11 +169,7 @@ function RequestContractCard() {
         }}
       ></input>
       <span>Durée du contrat</span>
-      <input
-        type="text"
-        placeholder="Durée du contrat"
-        //A rajouter : nbr mois et nbr jours en automatique
-      ></input>
+      <span>{addDurationContractMonth} mois</span>
       <div className={styles.btnContainer}>
         <BtnCancelComponent />
         <span>
