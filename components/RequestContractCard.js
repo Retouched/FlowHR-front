@@ -25,8 +25,12 @@ function RequestContractCard() {
   const [addContractReason, setAddContractReason] = useState(
     hireRequest.contractReason
   );
-  const [addStartDateContract, setAddStartDateContract] = useState(new Date());
-  const [addEndDateContract, setAddEndDateContract] = useState(new Date());
+  const [addStartDateContract, setAddStartDateContract] = useState(
+    hireRequest.startDateContract
+  );
+  const [addEndDateContract, setAddEndDateContract] = useState(
+    hireRequest.endDateContract
+  );
   const [addDurationContractDay, setAddDurationContractDay] = useState(null);
   const [addDurationContractMonth, setAddDurationContractMonth] =
     useState(null);
@@ -51,6 +55,7 @@ function RequestContractCard() {
       </option>
     );
   });
+  console.log("date: ", addStartDateContract);
 
   // RECUPERATION DES CONTRACT REASONS POUR INSERTION DANS UNE LISTE
   useEffect(() => {
@@ -130,6 +135,7 @@ function RequestContractCard() {
       <input
         type="date"
         placeholder="jj/mm/aaaa"
+        value={addStartDateContract}
         onChange={(e) => {
           setAddStartDateContract(e.target.value);
         }}
@@ -138,6 +144,7 @@ function RequestContractCard() {
       <input
         type="date"
         placeholder="jj/mm/aaaa"
+        value={addEndDateContract}
         onChange={(e) => {
           setAddEndDateContract(e.target.value);
         }}
