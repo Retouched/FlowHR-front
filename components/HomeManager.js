@@ -2,14 +2,19 @@ import styles from "@/styles/HomeManager.module.css";
 import NavBar from "./NavBar";
 import HireRequestCard from "./HireRequestCard";
 
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 function HomeManager() {
   // PREVOIR UNE BOUCLE POUR FAIRE APPARAITRE LES 3 DERNIERES HIRE REQUESTS DU MANAGER
+
+  const user = useSelector((state) => state.user.value);
 
   return (
     <div>
       <NavBar />
       <main className={styles.main}>
-        <h1 className={styles.titleH1}>Bienvenue "Prénom"</h1>
+        <h1 className={styles.titleH1}>Bienvenue {user.lastname}</h1>
         <div className={styles.btnContainer}>
           <button
             className={styles.newHireRequestBtn}

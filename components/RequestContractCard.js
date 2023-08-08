@@ -50,14 +50,11 @@ function RequestContractCard() {
 
     setAddDurationContractMonth(nbrMonths);
   }
-
-  //
+  // Déclanchement de la fonction lorsqu'on modifie les dates
   useEffect(() => {
     getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract);
   }, [addStartDateContract, addEndDateContract]);
 
-  //getMonthsBetweenTwoDates(addStartDateContract, addEndDateContract);
-  //console.log("addDurationContractMonth:", addDurationContractMonth);
   // RECUPERATION DES CONTRACT TYPES POUR INSERTION DANS UNE LISTE
   useEffect(() => {
     fetch("http://localhost:3000/contractTypes")
