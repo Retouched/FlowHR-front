@@ -26,7 +26,7 @@ function CardDirectorUndone() {
   }, []);
 
   const hireRequests = hireRequestData
-    .filter((data) => data.dpRequestStatus === false)
+    .filter((data) => data.dpRequestStatus === 1)
     .map((data, i) => {
       return (
         <div

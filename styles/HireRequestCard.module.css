@@ -11,3 +11,8 @@
   margin-top: 10px;
   cursor: pointer;
 }
+
+.rhDetailsContainer {
+  display: flex;
+  flex-direction: column;
+}

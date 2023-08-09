@@ -21,6 +21,11 @@ function HomeHR() {
       });
   }, []);
 
+  // AU CLIC REDIRECTION VERS NOUVELLE DEMANDE
+  const handleNewHireRequest = () => {
+    router.push("/requestDetails");
+  };
+
   //MAP POUR AFFICHER LES DEMANDE CONCERNANT LE MANAGER CONNECTE
   const hireRequests = hireRequestData.map((data, i) => {
     return <HireRequestCard key={i} {...data} />;
