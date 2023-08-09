@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/CardDirector.module.css";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function formatDate(dateString) {
   const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -10,6 +11,8 @@ function formatDate(dateString) {
 
 function CardDirectorDone() {
   const [hireRequestData, setHireRequestData] = useState([]);
+
+  const router = useRouter();
 
   //METTRE DANS "Traité" OU DANS "À traiter"
   //si hireRequest.dpRequestStatus = true alors mettre dans Traité, si il est false, le mettre dans A traiter.
@@ -27,7 +30,17 @@ function CardDirectorDone() {
     .filter((data) => data.dpRequestStatus === true)
     .map((data, i) => {
       return (
-        <div key={i} {...data} className={styles.userContainer}>
+        <div
+          key={i}
+          {...data}
+          className={styles.userContainer}
+          onClick={() => {
+            router.push({
+              pathname: "/dashboard/directeur/detailedDemand",
+              query: { id: data._id },
+            });
+          }}
+        >
           <div className={styles.topCard}>
             <span className={styles.numHire}>
               demande d'autorisation n°{data.numRequest}

@@ -152,7 +152,7 @@ function RequestWageCard(props) {
       />
       <span>Demande annexe </span>
       <input
-        readOnly={props?.data?.hireRequest?.minimumWage ? true : false}
+        readOnly={props?.data?.hireRequest?.addAnnexDemand ? true : false}
         type="text"
         placeholder="Demande annexe"
         value={addAnnexDemand}

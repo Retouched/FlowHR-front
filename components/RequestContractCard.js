@@ -17,23 +17,36 @@ function RequestContractCard() {
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addPourcentageWorktime, setAddPourcentageWorkTime] = useState(
-    hireRequest.pourcentageWorktime || ""
+    props?.data?.hireRequest?.pourcentageWorktime ??
+      hireRequest.pourcentageWorktime ??
+      ""
   ); // ajout du "|| "" " afin d'enlever l'erreur => uncontrolled input
   const [addContractType, setAddContractType] = useState(
-    hireRequest.contractType
+    props?.data?.hireRequest?.contractType ?? hireRequest.contractType ?? ""
   );
   const [addContractReason, setAddContractReason] = useState(
-    hireRequest.contractReason
+    props?.data?.hireRequest?.contractReason ?? hireRequest.contractReason ?? ""
   );
   const [addStartDateContract, setAddStartDateContract] = useState(
-    hireRequest.startDateContract
+    props?.data?.hireRequest?.startDateContract ??
+      hireRequest.startDateContract ??
+      ""
   );
   const [addEndDateContract, setAddEndDateContract] = useState(
-    hireRequest.endDateContract
+    props?.data?.hireRequest?.endDateContract ??
+      hireRequest.endDateContract ??
+      ""
   );
-  const [addDurationContractDay, setAddDurationContractDay] = useState(null);
-  const [addDurationContractMonth, setAddDurationContractMonth] =
-    useState(null);
+  const [addDurationContractDay, setAddDurationContractDay] = useState(
+    props?.data?.hireRequest?.durationContractDay ??
+      hireRequest.durationContractDay ??
+      null
+  );
+  const [addDurationContractMonth, setAddDurationContractMonth] = useState(
+    props?.data?.hireRequest?.durationContractMonth ??
+      hireRequest.durationContractMonth ??
+      null
+  );
 
   // USE STATE POUR RECUPERATION DES LISTES EN BDD (TYPE CONTRAT, MOTIF CONTRAT)
   const [contractType, setContractType] = useState([]);
@@ -125,17 +138,16 @@ function RequestContractCard() {
       </div>
       <span>Choisir le type de contrat </span>
       <select
+        readOnly={props?.data?.hireRequest?.contractType ? true : false}
         name="selectedContractType"
         value={addContractType}
         onChange={(e) => setAddContractType(e.target.value)}
       >
-        <option disabled value="placeholder">
-          Raison de la demande
-        </option>
         {allContractTypes}
       </select>
       <span>Temps de travail </span>
       <input
+        readOnly={props?.data?.hireRequest?.pourcentageWorktime ? true : false}
         type="text"
         placeholder="en pourcentage"
         value={addPourcentageWorktime}
@@ -144,17 +156,16 @@ function RequestContractCard() {
       <span>%</span>
       <span>Choisir le motif de contrat </span>
       <select
+        readOnly={props?.data?.hireRequest?.contractReason ? true : false}
         name="selectedContractReason"
         value={addContractReason}
         onChange={(e) => setAddContractReason(e.target.value)}
       >
-        <option disabled value="placeholder">
-          Motif du contrat
-        </option>
         {allContractReasons}
       </select>
       <span>Date de début de contrat </span>
       <input
+        readOnly={props?.data?.hireRequest?.startDateContract ? true : false}
         type="date"
         placeholder="jj/mm/aaaa"
         value={addStartDateContract}
@@ -164,6 +175,7 @@ function RequestContractCard() {
       ></input>
       <span>Date de fin de contrat </span>
       <input
+        readOnly={props?.data?.hireRequest?.endDateContract ? true : false}
         type="date"
         placeholder="jj/mm/aaaa"
         value={addEndDateContract}

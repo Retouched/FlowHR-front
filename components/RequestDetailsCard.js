@@ -16,20 +16,41 @@ function RequestDetailsCard() {
   const hireRequest = useSelector((state) => state.hireRequest.value);
 
   // DONNEES POUR AJOUTER UNE DEMANDE
-  const [addGoalRequest, setAddGoalRequest] = useState(hireRequest.goalRequest);
-
-  const [addNameReplacedPerson, setAddNameReplacedPerson] = useState("");
-  const [addLastnameReplacedPerson, setAddLastnameReplacedPerson] =
-    useState("");
-  const [addJob, setAddJob] = useState(hireRequest.job);
-  const [addNewJob, setAddNewJob] = useState("");
-  const [addClassification, setAddClassification] = useState(
-    hireRequest.classification
+  const [addGoalRequest, setAddGoalRequest] = useState(
+    props?.data?.hireRequest?.goalRequest ?? hireRequest.goalRequest ?? ""
   );
-  const [addFirstnameManager, setAddFirstnameManager] = useState("");
-  const [addLastnameManager, setAddLastnameManager] = useState("");
+
+  const [addNameReplacedPerson, setAddNameReplacedPerson] = useState(
+    props?.data?.hireRequest?.nameReplacedPerson ??
+      hireRequest.nameReplacedPerson ??
+      ""
+  );
+  const [addLastnameReplacedPerson, setAddLastnameReplacedPerson] = useState(
+    props?.data?.hireRequest?.lastnameReplacedPerson ??
+      hireRequest.lastnameReplacedPerson ??
+      ""
+  );
+  const [addJob, setAddJob] = useState(
+    props?.data?.hireRequest?.job ?? hireRequest.job ?? ""
+  );
+  const [addNewJob, setAddNewJob] = useState(
+    props?.data?.hireRequest?.newJob ?? hireRequest.newJob ?? ""
+  );
+  const [addClassification, setAddClassification] = useState(
+    props?.data?.hireRequest?.classification ?? hireRequest.classification ?? ""
+  );
+  const [addFirstnameManager, setAddFirstnameManager] = useState(
+    props?.data?.hireRequest?.firstnameManager ??
+      hireRequest.firstnameManager ??
+      ""
+  );
+  const [addLastnameManager, setAddLastnameManager] = useState(
+    props?.data?.hireRequest?.lastnameManager ??
+      hireRequest.lastnameManager ??
+      ""
+  );
   const [addUserDepartment, setAddUserDepartment] = useState(
-    hireRequest.department
+    props?.data?.hireRequest?.department ?? hireRequest.department ?? ""
   );
 
   const handleFirstSubmit = () => {
@@ -153,84 +174,86 @@ function RequestDetailsCard() {
       <div className={styles.inputContainer}>
         <span>Raison de la demande :</span>
         <select
+          readOnly={props?.data?.hireRequest?.goalRequest ? true : false}
           name="selectedGoalRequest"
-          placeholder="ezez"
-          //value={addGoalRequest}
+          placeholder="Raison de la demande"
+          value={addGoalRequest}
           onChange={(e) => setAddGoalRequest(e.target.value)}
         >
           {allGoalRequests}
         </select>
         <span>Identité de la personne remplacée :</span>
         <input
+          readOnly={props?.data?.hireRequest?.nameReplacedPerson ? true : false}
           type="text"
           placeholder="Prénom de la personne remplacée"
           id="nameReplacedPerson"
-          defaultValue={hireRequest.nameReplacedPerson}
+          value={addNameReplacedPerson}
           onChange={(e) => {
             setAddNameReplacedPerson(e.target.value);
           }}
         ></input>
         <input
+          readOnly={
+            props?.data?.hireRequest?.lastnameReplacedPerson ? true : false
+          }
           type="text"
           placeholder="Nom de la personne remplacée"
           id="lastnameReplacedPerson"
-          defaultValue={hireRequest.lastnameReplacedPerson}
+          value={addLastnameReplacedPerson}
           onChange={(e) => setAddLastnameReplacedPerson(e.target.value)}
         ></input>
         <span>Poste :</span>
         <select
+          readOnly={props?.data?.hireRequest?.job ? true : false}
           name="selectedJob"
           value={addJob} //Valeur du state
           onChange={(e) => setAddJob(e.target.value)} // mise a jour du state au choix dans la liste
         >
-          <option disabled value="placeholder">
-            Poste
-          </option>
           {allJobs}
         </select>
         <span>Création d'un nouveau poste :</span>
         <input
+          readOnly={props?.data?.hireRequest?.newJob ? true : false}
           type="text"
           placeholder="Nom du nouveau poste"
           id="newJob"
-          defaultValue={hireRequest.newJob}
+          value={newJob}
           onChange={(e) => setAddNewJob(e.target.value)}
         ></input>
         <span>Classification :</span>
         <select
+          readOnly={props?.data?.hireRequest?.classification ? true : false}
           name="selectedClassification"
           value={addClassification}
           onChange={(e) => setAddClassification(e.target.value)}
         >
-          <option disabled value="placeholder">
-            Classification
-          </option>
           {allClassifications}
         </select>
         <span>Prénom du manager :</span>
         <input
+          readOnly={props?.data?.hireRequest?.firstnameManager ? true : false}
           type="text"
           placeholder="Prénom du manager"
           id="firstnameManager"
-          defaultValue={hireRequest.firstnameManager}
+          value={addFirstnameManager}
           onChange={(e) => setAddFirstnameManager(e.target.value)}
         ></input>
         <span>Nom du manager :</span>
         <input
+          readOnly={props?.data?.hireRequest?.lastnameManager ? true : false}
           type="text"
           placeholder="Nom du manager"
           id="lastnameManager"
-          defaultValue={hireRequest.lastnameManager}
+          value={addLastnameManager}
           onChange={(e) => setAddLastnameManager(e.target.value)}
         ></input>
         <select
+          readOnly={props?.data?.hireRequest?.department ? true : false}
           name="selectedDepartment"
           value={addUserDepartment}
           onChange={(e) => setAddUserDepartment(e.target.value)}
         >
-          <option disabled value="placeholder">
-            Pôle
-          </option>
           {allDepartments}
         </select>
         <div className={styles.btnContainer}>
