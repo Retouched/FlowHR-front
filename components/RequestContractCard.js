@@ -185,15 +185,17 @@ function RequestContractCard(props) {
       ></input>
       <span>Durée du contrat</span>
       <span>{addDurationContractMonth} mois</span>
-      <div className={styles.btnContainer}>
-        <BtnCancelComponent />
-        <span>
-          <BtnBack />
-        </span>
-        <span onClick={() => handleSecondSubmit()}>
-          <BtnNextComponent />
-        </span>
-      </div>
+      {!props.hideButtons && (
+        <div className={styles.btnContainer}>
+          <BtnCancelComponent />
+          <span>
+            <BtnBack />
+          </span>
+          <span onClick={() => handleSecondSubmit()}>
+            <BtnNextComponent />
+          </span>
+        </div>
+      )}
     </div>
   );
 }

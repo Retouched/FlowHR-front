@@ -126,13 +126,13 @@ function RequestConfirmation() {
       <div>INSERER LA PROGRESSION</div>
       <div className={styles.cardsContainer}>
         <div className={styles.detailsCard}>
-          <RequestDetailsCard />
+          <RequestDetailsCard hideButtons={true} />
         </div>
         <div className={styles.contractCard}>
-          <RequestContractCard />
+          <RequestContractCard hideButtons={true} />
         </div>
         <div className={styles.wageCard}>
-          <RequestWageCard />
+          <RequestWageCard hideButtons={true} />
         </div>
       </div>
       <div className={styles.btnContainer}>
