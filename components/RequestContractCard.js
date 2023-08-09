@@ -138,7 +138,12 @@ function RequestContractCard(props) {
       </div>
       <span>Choisir le type de contrat </span>
       <select
-        readOnly={props?.data?.hireRequest?.contractType ? true : false}
+        disabled={
+          props?.data?.hireRequest?.contractType ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         name="selectedContractType"
         value={addContractType}
         onChange={(e) => setAddContractType(e.target.value)}
@@ -147,7 +152,12 @@ function RequestContractCard(props) {
       </select>
       <span>Temps de travail </span>
       <input
-        readOnly={props?.data?.hireRequest?.pourcentageWorktime ? true : false}
+        disabled={
+          props?.data?.hireRequest?.pourcentageWorktime ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         type="text"
         placeholder="en pourcentage"
         value={addPourcentageWorktime}
@@ -156,7 +166,12 @@ function RequestContractCard(props) {
       <span>%</span>
       <span>Choisir le motif de contrat </span>
       <select
-        readOnly={props?.data?.hireRequest?.contractReason ? true : false}
+        disabled={
+          props?.data?.hireRequest?.contractReason ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         name="selectedContractReason"
         value={addContractReason}
         onChange={(e) => setAddContractReason(e.target.value)}
@@ -165,7 +180,12 @@ function RequestContractCard(props) {
       </select>
       <span>Date de début de contrat </span>
       <input
-        readOnly={props?.data?.hireRequest?.startDateContract ? true : false}
+        disabled={
+          props?.data?.hireRequest?.startDateContract ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         type="date"
         placeholder="jj/mm/aaaa"
         value={addStartDateContract}
@@ -175,7 +195,12 @@ function RequestContractCard(props) {
       ></input>
       <span>Date de fin de contrat </span>
       <input
-        readOnly={props?.data?.hireRequest?.endDateContract ? true : false}
+        disabled={
+          props?.data?.hireRequest?.endDateContract ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         type="date"
         placeholder="jj/mm/aaaa"
         value={addEndDateContract}

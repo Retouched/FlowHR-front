@@ -90,7 +90,12 @@ function RequestWageCard(props) {
       <span>Fourchette de rémunération mensuelle </span>
       <span>Salaire mensuel minimum </span>
       <input
-        readOnly={props?.data?.hireRequest?.minimumWage ? true : false}
+        disabled={
+          props?.data?.hireRequest?.minimumWage ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         type="text"
         placeholder="Salaire de base mensuel en €"
         value={addMinimumWage}
@@ -99,7 +104,12 @@ function RequestWageCard(props) {
       <span>€</span>
       <span>Salaire mensuel maximum </span>
       <input
-        readOnly={props?.data?.hireRequest?.maximumWage ? true : false}
+        disabled={
+          props?.data?.hireRequest?.maximumWage ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         type="text"
         placeholder="Salaire de base mensuel en €"
         value={addMaximumWage}
@@ -109,8 +119,11 @@ function RequestWageCard(props) {
       <div>
         <span>Variable mensuel </span>
         <input
-          readOnly={
-            props?.data?.hireRequest?.monthlyVariableWage ? true : false
+          disabled={
+            props?.data?.hireRequest?.monthlyVariableWage ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
           }
           type="checkbox"
           checked={addMonthlyVariableWage}
@@ -118,8 +131,11 @@ function RequestWageCard(props) {
         />
       </div>
       <input
-        readOnly={
-          props?.data?.hireRequest?.monthlyVariableWageAmount ? true : false
+        disabled={
+          props?.data?.hireRequest?.monthlyVariableWageAmount ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
         }
         type="text"
         placeholder="Variable mensuel en €"
@@ -129,15 +145,23 @@ function RequestWageCard(props) {
       <div>
         <span>Variable annuel </span>
         <input
-          readOnly={props?.data?.hireRequest?.annualVariableWage ? true : false}
+          disabled={
+            props?.data?.hireRequest?.annualVariableWage ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           type="checkbox"
           checked={addAnnualVariableWage}
           onChange={handleClickOnAnnualVariableWage}
         />
       </div>
       <input
-        readOnly={
-          props?.data?.hireRequest?.annualVariableWageAmount ? true : false
+        disabled={
+          props?.data?.hireRequest?.annualVariableWageAmount ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
         }
         type="text"
         placeholder="Variable annuel en €"
@@ -146,13 +170,23 @@ function RequestWageCard(props) {
       ></input>
       <span>Accompagnement déménagement </span>
       <Switch
-        readOnly={props?.data?.hireRequest?.moveAssist ? true : false}
+        disabled={
+          props?.data?.hireRequest?.moveAssist ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         checked={addMoveAssist}
         onChange={handleSwitchOnAnnualVariableWage}
       />
       <span>Demande annexe </span>
       <input
-        readOnly={props?.data?.hireRequest?.addAnnexDemand ? true : false}
+        disabled={
+          props?.data?.hireRequest?.addAnnexDemand ||
+          router.pathname.includes("/requestConfirmation")
+            ? true
+            : false
+        }
         type="text"
         placeholder="Demande annexe"
         value={addAnnexDemand}

@@ -189,7 +189,7 @@ function RequestDetailsCard(props) {
         </select>
         <span>Identité de la personne remplacée :</span>
         <input
-          readOnly={
+          disabled={
             props?.data?.hireRequest?.nameReplacedPerson ||
             router.pathname.includes("/requestConfirmation")
               ? true
@@ -204,8 +204,11 @@ function RequestDetailsCard(props) {
           }}
         ></input>
         <input
-          readOnly={
-            props?.data?.hireRequest?.lastnameReplacedPerson ? true : false
+          disabled={
+            props?.data?.hireRequest?.lastnameReplacedPerson ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
           }
           type="text"
           placeholder="Nom de la personne remplacée"
@@ -215,7 +218,12 @@ function RequestDetailsCard(props) {
         ></input>
         <span>Poste :</span>
         <select
-          readOnly={props?.data?.hireRequest?.job ? true : false}
+          disabled={
+            props?.data?.hireRequest?.job ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           name="selectedJob"
           value={addJob} //Valeur du state
           onChange={(e) => setAddJob(e.target.value)} // mise a jour du state au choix dans la liste
@@ -224,7 +232,12 @@ function RequestDetailsCard(props) {
         </select>
         <span>Création d'un nouveau poste :</span>
         <input
-          readOnly={props?.data?.hireRequest?.newJob ? true : false}
+          disabled={
+            props?.data?.hireRequest?.newJob ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           type="text"
           placeholder="Nom du nouveau poste"
           id="newJob"
@@ -233,7 +246,12 @@ function RequestDetailsCard(props) {
         ></input>
         <span>Classification :</span>
         <select
-          readOnly={props?.data?.hireRequest?.classification ? true : false}
+          disabled={
+            props?.data?.hireRequest?.classification ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           name="selectedClassification"
           value={addClassification}
           onChange={(e) => setAddClassification(e.target.value)}
@@ -242,7 +260,12 @@ function RequestDetailsCard(props) {
         </select>
         <span>Prénom du manager :</span>
         <input
-          readOnly={props?.data?.hireRequest?.firstnameManager ? true : false}
+          disabled={
+            props?.data?.hireRequest?.firstnameManager ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           type="text"
           placeholder="Prénom du manager"
           id="firstnameManager"
@@ -251,7 +274,12 @@ function RequestDetailsCard(props) {
         ></input>
         <span>Nom du manager :</span>
         <input
-          readOnly={props?.data?.hireRequest?.lastnameManager ? true : false}
+          disabled={
+            props?.data?.hireRequest?.lastnameManager ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           type="text"
           placeholder="Nom du manager"
           id="lastnameManager"
@@ -259,7 +287,12 @@ function RequestDetailsCard(props) {
           onChange={(e) => setAddLastnameManager(e.target.value)}
         ></input>
         <select
-          readOnly={props?.data?.hireRequest?.department ? true : false}
+          disabled={
+            props?.data?.hireRequest?.department ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           name="selectedDepartment"
           value={addUserDepartment}
           onChange={(e) => setAddUserDepartment(e.target.value)}
