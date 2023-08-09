@@ -42,7 +42,7 @@ function HireRequestCard(props) {
     const nbrOfChoiceLeft = tabStatus.length;
     for (let i = 0; i < tabStatus.length; i++) {
       console.log("tabStatus: ", tabStatus);
-      if (tabStatus[i] === 0 || 1) {
+      if (tabStatus[i] !== 1) {
         nbrOfChoiceLeft -= 1;
         console.log("nbr: ", nbrOfChoiceLeft);
         if (nbrOfChoiceLeft === 0) {
@@ -73,26 +73,77 @@ function HireRequestCard(props) {
         <div className={styles.rhDetailsContainer}>
           {props.dpRequestStatus === 1 && (
             <span>
-              Choix du dp:
+              Choix du DP:
               <FontAwesomeIcon icon={faHourglassHalf} />
             </span>
           )}
           {props.dpRequestStatus === 2 && (
             <span>
-              Choix du dp:
+              Choix du DP:
               <FontAwesomeIcon icon={faCircleCheck} />
             </span>
           )}
           {props.dpRequestStatus === 0 && (
             <span>
-              Choix du dp:
+              Choix du DP:
               <FontAwesomeIcon icon={faCircleXmark} />
             </span>
           )}
 
-          <span>Choix du drh: </span>
-          <span>Choix du daf: </span>
-          <span>Choix du pdg: </span>
+          {props.drhRequestStatus === 1 && (
+            <span>
+              Choix du DRH:
+              <FontAwesomeIcon icon={faHourglassHalf} />
+            </span>
+          )}
+          {props.drhRequestStatus === 2 && (
+            <span>
+              Choix du DRH:
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </span>
+          )}
+          {props.drhRequestStatus === 0 && (
+            <span>
+              Choix du DRH:
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </span>
+          )}
+          {props.dafRequestStatus === 1 && (
+            <span>
+              Choix DAF:
+              <FontAwesomeIcon icon={faHourglassHalf} />
+            </span>
+          )}
+          {props.dafRequestStatus === 2 && (
+            <span>
+              Choix du DAF:
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </span>
+          )}
+          {props.dafRequestStatus === 0 && (
+            <span>
+              Choix du DAF:
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </span>
+          )}
+          {props.pdgRequestStatus === 1 && (
+            <span>
+              Choix du PDG:
+              <FontAwesomeIcon icon={faHourglassHalf} />
+            </span>
+          )}
+          {props.pdgRequestStatus === 2 && (
+            <span>
+              Choix du PDG:
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </span>
+          )}
+          {props.pdgRequestStatus === 0 && (
+            <span>
+              Choix du PDG:
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </span>
+          )}
         </div>
       )}
     </div>
