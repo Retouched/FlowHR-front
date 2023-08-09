@@ -28,7 +28,6 @@ function HomeManager() {
         setHireRequestData(data.allHireRequests);
       });
   }, []);
-  console.log("hireRequestData: ", hireRequestData[6]);
 
   //MAP POUR AFFICHER LES DEMANDE CONCERNANT LE MANAGER CONNECTE
   const hireRequests = hireRequestData
