@@ -5,12 +5,38 @@ import HireRequestCard from "./HireRequestCard";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import hireRequest from "@/reducers/hireRequest";
 
 function HomeManager() {
   // PREVOIR UNE BOUCLE POUR FAIRE APPARAITRE LES 3 DERNIERES HIRE REQUESTS DU MANAGER
 
   const user = useSelector((state) => state.user.value);
   const router = useRouter();
+
+  const [hireRequestData, setHireRequestData] = useState([]);
+
+  // APPELER LA ROUTE HIREREQUEST
+  // SI USER.ID DANS LE STORE A LA CONNEXION = USER ID ENREGISTER LORS DE LA HIRE REQUEST
+  // ALORS MAP SUR LES DEMANDES
+  // RECUPERER LE FETCH DEJA FAIT DANS CARD DIRECTOR UNDONE
+
+  // RECUPERATION DES DONNEES DES HIRE REQUESTS
+  useEffect(() => {
+    fetch("http://localhost:3000/hireRequests")
+      .then((response) => response.json())
+      .then((data) => {
+        setHireRequestData(data.allHireRequests);
+      });
+  }, []);
+  console.log("hireRequestData: ", hireRequestData[6]);
+
+  //MAP POUR AFFICHER LES DEMANDE CONCERNANT LE MANAGER CONNECTE
+  const hireRequests = hireRequestData
+    .filter((data) => data.user.token === user.token)
+    .map((data, i) => {
+      return <HireRequestCard key={i} {...data} />;
+    });
+  console.log("hireRequests: ", hireRequests);
 
   // AU CLIC REDIRECTION VERS NOUVELLE DEMANDE
   const handleNewHireRequest = () => {
@@ -45,9 +71,7 @@ function HomeManager() {
             <div>DATE</div>
             <div>DETAIL</div>
           </div>
-          <HireRequestCard />
-          <HireRequestCard />
-          <HireRequestCard />
+          {hireRequests}
         </div>
         <button
           className={styles.dashboardBtn}
