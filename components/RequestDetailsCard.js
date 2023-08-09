@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 
-function RequestDetailsCard() {
+function RequestDetailsCard(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
@@ -218,7 +218,7 @@ function RequestDetailsCard() {
           type="text"
           placeholder="Nom du nouveau poste"
           id="newJob"
-          value={newJob}
+          value={addNewJob}
           onChange={(e) => setAddNewJob(e.target.value)}
         ></input>
         <span>Classification :</span>

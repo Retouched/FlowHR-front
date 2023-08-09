@@ -10,7 +10,7 @@ import BtnCancelComponent from "./BtnCancel";
 import BtnNextComponent from "./BtnNext";
 import BtnBack from "./BtnBack";
 
-function RequestContractCard() {
+function RequestContractCard(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
