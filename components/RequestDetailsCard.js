@@ -256,12 +256,14 @@ function RequestDetailsCard(props) {
         >
           {allDepartments}
         </select>
-        <div className={styles.btnContainer}>
-          <BtnCancelComponent />
-          <span onClick={() => handleFirstSubmit()}>
-            <BtnNextComponent />
-          </span>
-        </div>
+        {!props.hideButtons && (
+          <div className={styles.btnContainer}>
+            <BtnCancelComponent />
+            <span onClick={() => handleFirstSubmit()}>
+              <BtnNextComponent />
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

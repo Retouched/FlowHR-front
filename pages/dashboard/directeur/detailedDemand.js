@@ -29,13 +29,13 @@ function DetailedDemandPage() {
         {hireRequestData && (
           <>
             <div className={styles.detailsCard}>
-              <RequestDetailsCard data={hireRequestData} />
+              <RequestDetailsCard data={hireRequestData} hideButtons={true} />
             </div>
             <div className={styles.contractCard}>
-              <RequestContractCard data={hireRequestData} />
+              <RequestContractCard data={hireRequestData} hideButtons={true} />
             </div>
             <div className={styles.wageCard}>
-              <RequestWageCard data={hireRequestData} />
+              <RequestWageCard data={hireRequestData} hideButtons={true} />
             </div>
           </>
         )}

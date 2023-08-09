@@ -158,15 +158,17 @@ function RequestWageCard(props) {
         value={addAnnexDemand}
         onChange={(e) => setAddAnnexDemand(e.target.value)}
       ></input>
-      <div className={styles.btnContainer}>
-        <BtnCancelComponent />
-        <span>
-          <BtnBack />
-        </span>
-        <span onClick={() => handleThirdSubmit()}>
-          <BtnNextComponent />
-        </span>
-      </div>
+      {!props.hideButtons && (
+        <div className={styles.btnContainer}>
+          <BtnCancelComponent />
+          <span>
+            <BtnBack />
+          </span>
+          <span onClick={() => handleThirdSubmit()}>
+            <BtnNextComponent />
+          </span>
+        </div>
+      )}
     </div>
   );
 }
