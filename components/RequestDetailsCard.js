@@ -174,7 +174,12 @@ function RequestDetailsCard(props) {
       <div className={styles.inputContainer}>
         <span>Raison de la demande :</span>
         <select
-          readOnly={props?.data?.hireRequest?.goalRequest ? true : false}
+          disabled={
+            props?.data?.hireRequest?.goalRequest ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           name="selectedGoalRequest"
           placeholder="Raison de la demande"
           value={addGoalRequest}
@@ -184,7 +189,12 @@ function RequestDetailsCard(props) {
         </select>
         <span>Identité de la personne remplacée :</span>
         <input
-          readOnly={props?.data?.hireRequest?.nameReplacedPerson ? true : false}
+          readOnly={
+            props?.data?.hireRequest?.nameReplacedPerson ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
           type="text"
           placeholder="Prénom de la personne remplacée"
           id="nameReplacedPerson"

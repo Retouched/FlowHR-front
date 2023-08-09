@@ -37,6 +37,19 @@ function DetailedDemandPage() {
             <div className={styles.wageCard}>
               <RequestWageCard data={hireRequestData} hideButtons={true} />
             </div>
+            <div className={styles.containerBtns}>
+              <button className={styles.btn} id="BtnNextComponent">
+                CONFIRMER
+              </button>
+              <div className={styles.rightBtns}>
+                <button className={styles.btn} id="BtnNextComponent">
+                  CONFIRMER
+                </button>
+                <button className={styles.btn} id="BtnNextComponent">
+                  CONFIRMER
+                </button>
+              </div>
+            </div>
           </>
         )}
       </div>
