@@ -117,7 +117,7 @@ function RequestConfirmation() {
         console.log(data);
       });
     // Redirection
-    //router.push("/requestRedirection");
+    router.push("/requestRedirection");
   };
   console.log("date store: ", hireRequest.startDateContract);
   return (

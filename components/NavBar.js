@@ -51,7 +51,7 @@ function NavBar() {
           router.push("/requestDetails");
         }}
       >
-        <span className="New hire req">Nouvelle demande d'ambauche</span>
+        <span className="New hire req">Nouvelle demande d'embauche</span>
       </div>
       <div className={styles.optionContainer} onClick={() => handleLogout()}>
         <span className="Logout">Deconnexion</span>

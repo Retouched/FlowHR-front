@@ -1,10 +1,14 @@
 import styles from "../styles/RequestRedirection.module.css";
 import NavBar from "./NavBar";
-
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { resetStore } from "@/reducers/hireRequest";
 
 function RequestRedirection() {
   const router = useRouter();
+  const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.main}>
       <NavBar />
@@ -16,9 +20,24 @@ function RequestRedirection() {
           traitement de votre demande par les différents acteurs !
         </span>
         <div className={styles.btnContainer}>
-          <button className={styles.btn}>Consulter mon tableau de bord</button>
+          <button
+            className={styles.btn}
+            onClick={() => {
+              router.push(`/dashboard/${user.role.toLowerCase()}`);
+            }}
+          >
+            Consulter mon tableau de bord
+          </button>
           <span>ou</span>
-          <button className={styles.btn}>Effectuer une autre demande</button>
+          <button
+            className={styles.btn}
+            onClick={() => {
+              router.push("/requestDetails");
+              dispatch(resetStore());
+            }}
+          >
+            Effectuer une autre demande
+          </button>
         </div>
       </div>
     </div>
