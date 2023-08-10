@@ -3,7 +3,7 @@ import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/RequestDetailsCard.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addHireRequest } from "@/reducers/hireRequest";
+import { addHireRequest, resetStore } from "@/reducers/hireRequest";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -14,6 +14,12 @@ function RequestDetailsCard(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
+  const user = useSelector((state) => state.user.value);
+
+  const handleCancel = () => {
+    dispatch(resetStore());
+    router.push(`/dashboard/${user.role.toLowerCase()}`);
+  };
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addGoalRequest, setAddGoalRequest] = useState(
@@ -188,48 +194,55 @@ function RequestDetailsCard(props) {
           {allGoalRequests}
         </select>
         <span>Identité de la personne remplacée :</span>
-        <input
-          disabled={
-            props?.data?.hireRequest?.nameReplacedPerson ||
-            router.pathname.includes("/requestConfirmation")
-              ? true
-              : false
-          }
-          type="text"
-          placeholder="Prénom de la personne remplacée"
-          id="nameReplacedPerson"
-          value={addNameReplacedPerson}
-          onChange={(e) => {
-            setAddNameReplacedPerson(e.target.value);
-          }}
-        ></input>
-        <input
-          disabled={
-            props?.data?.hireRequest?.lastnameReplacedPerson ||
-            router.pathname.includes("/requestConfirmation")
-              ? true
-              : false
-          }
-          type="text"
-          placeholder="Nom de la personne remplacée"
-          id="lastnameReplacedPerson"
-          value={addLastnameReplacedPerson}
-          onChange={(e) => setAddLastnameReplacedPerson(e.target.value)}
-        ></input>
-        <span>Poste :</span>
-        <select
-          disabled={
-            props?.data?.hireRequest?.job ||
-            router.pathname.includes("/requestConfirmation")
-              ? true
-              : false
-          }
-          name="selectedJob"
-          value={addJob} //Valeur du state
-          onChange={(e) => setAddJob(e.target.value)} // mise a jour du state au choix dans la liste
-        >
-          {allJobs}
-        </select>
+        <div className={styles.replacedPerson}>
+          <input
+            disabled={
+              props?.data?.hireRequest?.nameReplacedPerson ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="text"
+            placeholder="Prénom de la personne remplacée"
+            id="nameReplacedPerson"
+            value={addNameReplacedPerson}
+            onChange={(e) => {
+              setAddNameReplacedPerson(e.target.value);
+            }}
+            className={styles.firstnameReplaced}
+          ></input>
+          <input
+            disabled={
+              props?.data?.hireRequest?.lastnameReplacedPerson ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="text"
+            placeholder="Nom de la personne remplacée"
+            id="lastnameReplacedPerson"
+            value={addLastnameReplacedPerson}
+            onChange={(e) => setAddLastnameReplacedPerson(e.target.value)}
+            className={styles.lastnameReplaced}
+          ></input>
+        </div>
+        <div className={styles.poste}>
+          <span>Poste :</span>
+          <select
+            className={styles.selectedJob}
+            disabled={
+              props?.data?.hireRequest?.job ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            name="selectedJob"
+            value={addJob} //Valeur du state
+            onChange={(e) => setAddJob(e.target.value)} // mise a jour du state au choix dans la liste
+          >
+            {allJobs}
+          </select>
+        </div>
         <span>Création d'un nouveau poste :</span>
         <input
           disabled={
@@ -258,34 +271,35 @@ function RequestDetailsCard(props) {
         >
           {allClassifications}
         </select>
-        <span>Prénom du manager :</span>
-        <input
-          disabled={
-            props?.data?.hireRequest?.firstnameManager ||
-            router.pathname.includes("/requestConfirmation")
-              ? true
-              : false
-          }
-          type="text"
-          placeholder="Prénom du manager"
-          id="firstnameManager"
-          value={addFirstnameManager}
-          onChange={(e) => setAddFirstnameManager(e.target.value)}
-        ></input>
-        <span>Nom du manager :</span>
-        <input
-          disabled={
-            props?.data?.hireRequest?.lastnameManager ||
-            router.pathname.includes("/requestConfirmation")
-              ? true
-              : false
-          }
-          type="text"
-          placeholder="Nom du manager"
-          id="lastnameManager"
-          value={addLastnameManager}
-          onChange={(e) => setAddLastnameManager(e.target.value)}
-        ></input>
+        <span>Manager :</span>
+        <div className={styles.managerProfil}>
+          <input
+            disabled={
+              props?.data?.hireRequest?.firstnameManager ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="text"
+            placeholder="Prénom du manager"
+            id="firstnameManager"
+            value={addFirstnameManager}
+            onChange={(e) => setAddFirstnameManager(e.target.value)}
+          ></input>
+          <input
+            disabled={
+              props?.data?.hireRequest?.lastnameManager ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="text"
+            placeholder="Nom du manager"
+            id="lastnameManager"
+            value={addLastnameManager}
+            onChange={(e) => setAddLastnameManager(e.target.value)}
+          ></input>
+        </div>
         <select
           disabled={
             props?.data?.hireRequest?.department ||
@@ -299,15 +313,17 @@ function RequestDetailsCard(props) {
         >
           {allDepartments}
         </select>
-        {!props.hideButtons && (
-          <div className={styles.btnContainer}>
-            <BtnCancelComponent />
-            <span onClick={() => handleFirstSubmit()}>
-              <BtnNextComponent />
-            </span>
-          </div>
-        )}
       </div>
+      {!props.hideButtons && (
+        <div className={styles.btnContainer}>
+          <span className={styles.cancelBtn} onClick={handleCancel}>
+            <BtnCancelComponent />
+          </span>
+          <span className={styles.nextBtn} onClick={() => handleFirstSubmit()}>
+            <BtnNextComponent />
+          </span>
+        </div>
+      )}
     </div>
   );
 }

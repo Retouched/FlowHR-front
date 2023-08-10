@@ -63,6 +63,7 @@ function DetailedDemandPage() {
           console.log(data.result);
           // ferme la modal
           toggleIsModalRefuseOpen();
+          router.push(`/dashboard/directeur`);
         }
       });
   };
@@ -95,6 +96,7 @@ function DetailedDemandPage() {
         if (data.result) {
           // ferme la modal
           toggleIsModalAcceptOpen();
+          router.push(`/dashboard/directeur`);
         }
       });
   };

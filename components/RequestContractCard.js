@@ -3,7 +3,7 @@ import styles from "../styles/RequestContractCard.module.css";
 import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addHireRequest } from "@/reducers/hireRequest";
+import { addHireRequest, resetStore } from "@/reducers/hireRequest";
 import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
@@ -14,6 +14,12 @@ function RequestContractCard(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
+  const user = useSelector((state) => state.user.value);
+
+  const handleCancel = () => {
+    dispatch(resetStore());
+    router.push(`/dashboard/${user.role.toLowerCase()}`);
+  };
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addPourcentageWorktime, setAddPourcentageWorkTime] = useState(
@@ -212,8 +218,14 @@ function RequestContractCard(props) {
       <span>{addDurationContractMonth} mois</span>
       {!props.hideButtons && (
         <div className={styles.btnContainer}>
-          <BtnCancelComponent />
-          <span>
+          <span onClick={handleCancel}>
+            <BtnCancelComponent />
+          </span>
+          <span
+            onClick={() => {
+              router.push(`/requestDetails`);
+            }}
+          >
             <BtnBack />
           </span>
           <span onClick={() => handleSecondSubmit()}>

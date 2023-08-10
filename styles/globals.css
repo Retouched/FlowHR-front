@@ -23,4 +23,21 @@ button{
 
 * {
   box-sizing: border-box;
+  font-family:  'Fredoka One', sans-serif;
+  
+}
+input{
+  padding:5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+input::placeholder{
+  font-style: italic;
+  font-size:x-small;
+}
+select{
+  padding:5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+
 }

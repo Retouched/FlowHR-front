@@ -5,7 +5,7 @@ import RequestDetailsCard from "./RequestDetailsCard";
 import RequestWageCard from "./RequestWageCard";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addHireRequest } from "@/reducers/hireRequest";
+import { addHireRequest, resetStore } from "@/reducers/hireRequest";
 import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
@@ -20,6 +20,11 @@ function RequestConfirmation() {
   const user = useSelector((state) => state.user.value);
   console.log("hireRequest: ", hireRequest);
   console.log("user: ", user);
+
+  const handleCancel = () => {
+    dispatch(resetStore());
+    router.push(`/dashboard/${user.role.toLowerCase()}`);
+  };
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   // FIRST SUBMIT
@@ -136,10 +141,15 @@ function RequestConfirmation() {
         </div>
       </div>
       <div className={styles.btnContainer}>
-        <span>
+        <span onClick={handleCancel}>
           <BtnCancelComponent />
         </span>
-        <span>
+        <span
+          onClick={() => {
+            dispatch(resetStore());
+            router.push(`/requestWage`);
+          }}
+        >
           <BtnBack />
         </span>
         <span onClick={() => handleFinalSubmit()}>

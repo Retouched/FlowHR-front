@@ -9,15 +9,6 @@ import CardDirectorUndone from "./CardDirectorUndone";
 function HomeDirector() {
   const user = useSelector((state) => state.user.value);
 
-  // RECUPERATION DES POLES POUR INSERTION DANS UNE LISTE
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/departments")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setDepartments(data.allDepartments);
-  //     });
-  // }, []);
-
   const items = [
     {
       key: "1",
@@ -47,11 +38,16 @@ function HomeDirector() {
               type="card"
               className={styles.tabs}
               onChange={onChange}
+              tabBarStyle={{
+                backgroundColor: "#018786",
+                borderRadius: "15px 15px 0 0",
+              }}
             />
           </div>
-          <div className={styles.componentsContainer}>
+          {/* FONCTION FUTURE POUR FAIRE UNE DEMANDE D'ÉVOLUTION */}
+          {/* <div className={styles.componentsContainer}>
             <span className={styles.title}>Demandes d'évolution</span>
-          </div>
+          </div> */}
         </div>
       </main>
     </div>

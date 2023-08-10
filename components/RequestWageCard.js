@@ -3,7 +3,7 @@ import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/RequestWageCard.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addHireRequest } from "@/reducers/hireRequest";
+import { addHireRequest, resetStore } from "@/reducers/hireRequest";
 import { useRouter } from "next/router";
 
 import BtnCancelComponent from "./BtnCancel";
@@ -15,6 +15,12 @@ function RequestWageCard(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const hireRequest = useSelector((state) => state.hireRequest.value);
+  const user = useSelector((state) => state.user.value);
+
+  const handleCancel = () => {
+    dispatch(resetStore());
+    router.push(`/dashboard/${user.role.toLowerCase()}`);
+  };
 
   // DONNEES POUR AJOUTER UNE DEMANDE
   const [addMinimumWage, setAddMinimumWage] = useState(
@@ -194,8 +200,14 @@ function RequestWageCard(props) {
       ></input>
       {!props.hideButtons && (
         <div className={styles.btnContainer}>
-          <BtnCancelComponent />
-          <span>
+          <span onClick={handleCancel}>
+            <BtnCancelComponent />
+          </span>
+          <span
+            onClick={() => {
+              router.push(`/requestContract`);
+            }}
+          >
             <BtnBack />
           </span>
           <span onClick={() => handleThirdSubmit()}>
