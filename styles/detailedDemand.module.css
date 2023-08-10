@@ -1,0 +1,41 @@
+.main {
+    width: 100vw;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .content{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 100px;
+  }
+  .containerBtns{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .rightBtns{
+    display: flex;
+  }
+  .btn{
+    margin-left: 50px;
+  }
+  .containerModal{
+    display:flex;
+    flex-direction: column;
+  }
+  .comment{
+    max-height: 120px;
+    width: 100%!important;
+    margin: 20px 0;
+  }
+  .modalBtnContainer{ 
+    display: flex;
+  }
+  .btnRefuse{
+    margin-left:20px ;
+  }
