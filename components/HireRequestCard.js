@@ -57,7 +57,7 @@ function HireRequestCard(props) {
     <div className={styles.hireRequestContainer}>
       {isDone && (
         <div className={styles.error}>
-          <FontAwesomeIcon icon={faCircleCheck} />
+          <FontAwesomeIcon icon={faCircleCheck} size="xl" />
         </div>
       )}
       {!isDone && <FontAwesomeIcon icon={faHourglassHalf} size="xl" />}

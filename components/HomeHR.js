@@ -35,7 +35,6 @@ function HomeHR() {
     <div>
       <NavBar />
       <main className={styles.main}>
-        <h1 className={styles.title}>HomeHR</h1>
         <h1 className={styles.titleH1}>Bienvenue {user.lastname}</h1>
         <div className={styles.btnContainer}>
           <button
@@ -55,12 +54,12 @@ function HomeHR() {
         <h2 className={styles.titleH2}>Aperçu de mon tableau de bord</h2>
         <div className={styles.hireRequestContainer}>
           <div className={styles.letterHead}>
-            <div>ETAT</div>
-            <div>DEMANDE N°</div>
-            <div>DATE</div>
-            <div>DETAIL</div>
+            <div className={styles.etat}>ETAT</div>
+            <div className={styles.demande}>DEMANDE N°</div>
+            <div className={styles.date}>DATE</div>
+            <div className={styles.detail}>DETAIL</div>
           </div>
-          {hireRequests}
+          <div className={styles.hireRequestToScroll}>{hireRequests}</div>
         </div>
         <button
           className={styles.dashboardBtn}
