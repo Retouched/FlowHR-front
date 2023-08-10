@@ -56,8 +56,8 @@ function CardDirectorUndone() {
             />
             <div className={styles.containerInfos}>
               <span className={styles.infos}>
-                {data.user.lastname} {data.user.firstname} {data.user.email}:{" "}
-                {data.job.jobName}
+                {data.user?.lastname} {data.user?.firstname} {data.user?.email}:{" "}
+                {data.job?.jobName}
               </span>
               <button className={styles.button}>Accéder à la demande</button>
             </div>

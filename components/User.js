@@ -18,7 +18,7 @@ function User(props) {
         </div>
         <div className={styles.roleBtnAndXmark}>
           <div className={styles.roleAndUpdateStatusBtnContainer}>
-            <div>{props.role.roleName}</div>
+            <div>{props.role?.roleName}</div>
             <button>Mettre à jour son rôle</button>
           </div>
           <FontAwesomeIcon
