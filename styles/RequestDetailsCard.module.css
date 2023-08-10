@@ -1,14 +1,62 @@
 .title {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  /* margin:30px; */
 }
 
 .inputContainer {
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
+  border: solid 4px #018786 ;
+  padding: 5px;
+  border-radius: 20px;
 }
 
 .btnContainer {
   display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.message{
+  margin-right: 40px;
+}
+.cancelBtn{
+  margin-right: 350px;
+}
+.replacedPerson{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 5px;
+}
+.firstnameReplaced{
+  display: flex;
+  flex-grow: 1;
+}
+.lastnameReplaced{
+  display: flex;
+  flex-grow: 1;
+}
+.poste{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;
+}
+.selectedJob{
+  margin-bottom: 0;
+}
+.managerProfil{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;
 }

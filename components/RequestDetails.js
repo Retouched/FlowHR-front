@@ -8,7 +8,6 @@ function RequestDetails() {
   return (
     <div className={styles.main}>
       <NavBar />
-      <div>INSERER LA PROGRESSION</div>
       <RequestDetailsCard />
     </div>
   );

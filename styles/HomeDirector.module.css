@@ -32,8 +32,7 @@
 
 .tabs{
     border: solid 2px black;
-}
-
-.tab1{
-
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-family: 'Fredoka One', sans-serif;
 }

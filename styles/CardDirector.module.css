@@ -1,8 +1,13 @@
 .userContainer{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     cursor: pointer;
     margin-bottom: 20px;
+    border: solid 2px black ;
+    border-radius: 15px;
+    height: 160px;
+    width: 400px;
 }
 
 .topCard{
@@ -24,7 +29,10 @@ display: flex;
 }
 
 .icon{
+    display: flex;
+    left: 0;
     margin: auto;
+    margin-left: 0;
     color: #018786;
     padding: 5px;
     width: 50px;
@@ -35,6 +43,7 @@ display: flex;
 display: flex;
 flex-direction: column;
 padding: 5px;
+flex-grow: 2;
 }
 
 .infos{
@@ -47,4 +56,14 @@ padding: 5px;
     background-color: #018786;
     border-radius: 5px;
     padding: 5px;
+}
+.allRequestContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    width: 100%;
+    margin-bottom: 10px;
+    max-height: 270px;
 }

@@ -199,7 +199,7 @@ function CardDirectorUndone() {
     });
 
   return (
-    <div>
+    <div className={styles.allRequestContainer}>
       {user.job === "PDG" && <div>{pdgHireRequests}</div>}
       {user.job === "DIRECTEUR POLE ADMIN ET FINANCES" && (
         <div>{dafHireRequests}</div>
