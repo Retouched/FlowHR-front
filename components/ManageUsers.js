@@ -3,11 +3,20 @@ import styles from "@/styles/ManageUsers.module.css";
 import User from "./User";
 import { faUserPlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "./Modal";
 import useToggle from "./use-toggle";
 import NavBar from "./NavBar";
+import { useRouter } from "next/router";
 
 function ManageUsers() {
+  const router = useRouter();
+  const user = useSelector((state) => state.user.value);
+
+  const handleBackToDashboard = () => {
+    router.push(`/dashboard/${user.role.toLowerCase()}`);
+  };
+
   const [isModalAddUserOpen, toggleIsModalAddUserOpen] = useToggle(false);
 
   // DONNEES POUR AJOUTER UN COLLABORATEUR
@@ -155,7 +164,7 @@ function ManageUsers() {
         {isModalAddUserOpen && (
           <Modal title="Add user" handleDismiss={toggleIsModalAddUserOpen}>
             <div className={styles.modalContainer}>
-              <div>Creation d'un collaborateur</div>
+              <h2>Creation d'un collaborateur</h2>
               <input
                 type="text"
                 placeholder="firstname"
@@ -220,8 +229,13 @@ function ManageUsers() {
                 </span>
               )}
               <div className={styles.btnContainer}>
-                <button onClick={toggleIsModalAddUserOpen}>ANNULER</button>
-                <button onClick={() => handleAddUser()}>
+                <button
+                  className={styles.btn}
+                  onClick={toggleIsModalAddUserOpen}
+                >
+                  ANNULER
+                </button>
+                <button className={styles.btn} onClick={() => handleAddUser()}>
                   CREER LE COLLABORATEUR
                 </button>
               </div>
@@ -241,11 +255,15 @@ function ManageUsers() {
             />
             Ajouter un collaborateur
           </button>
-          <div className={styles.title}>Gestion des utilisateurs</div>
+          <h1 className={styles.title}>Gestion des utilisateurs</h1>
           <div className={styles.whiteText}>Texte pour mise en page</div>
         </div>
         <div className={styles.allUsersContainer}>{users}</div>
-        <button className={styles.backBtn} id="back to HR dashboard">
+        <button
+          className={styles.backBtn}
+          id="back to HR dashboard"
+          onClick={handleBackToDashboard}
+        >
           RETOUR A LA PAGE D'ACCUEIL
         </button>
       </div>

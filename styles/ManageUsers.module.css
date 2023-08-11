@@ -69,11 +69,21 @@
   width: 500px;
   height: 500px;
 }
-.btnContainer {
-  display: flex;
-}
 
 .error {
   color: #f44336;
   font-size: smaller;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #03dac6;
+  border-radius: 15px;
+  padding: 5px;
 }

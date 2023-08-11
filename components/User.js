@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/User.module.css";
 
 function User(props) {
@@ -11,7 +11,7 @@ function User(props) {
   return (
     <>
       <div className={styles.userContainer}>
-        <div>AVATAR</div>
+        <FontAwesomeIcon icon={faUser} size="xl" />
         <div className={styles.detailsUser}>
           {props.firstname} {props.lastname} {props.email}{" "}
           {props.department.departmentName}
@@ -19,7 +19,7 @@ function User(props) {
         <div className={styles.roleBtnAndXmark}>
           <div className={styles.roleAndUpdateStatusBtnContainer}>
             <div>{props.role?.roleName}</div>
-            <button>Mettre à jour son rôle</button>
+            <button className={styles.btnUpdate}>Mettre à jour son rôle</button>
           </div>
           <FontAwesomeIcon
             icon={faCircleXmark}

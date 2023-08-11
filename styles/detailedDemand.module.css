@@ -1,54 +1,65 @@
-
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-  
-  }
-  .content{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 10px;
-  }
-  .containerBtns{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 10px;
-  }
-  .rightBtns{
-    display: flex;
-  }
-  .btn{
-    margin-left: 50px;
-    width: 300px;
-    padding: 10px;
-    background-color: #018786;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  .containerModal{
-    display:flex;
-    flex-direction: column;
-  }
-  .comment{
-    max-height: 120px;
-    width: 100%!important;
-    margin: 20px 0;
-  }
-  .modalBtnContainer{ 
-    display: flex;
-  }
-  .btnRefuse{
-    margin-left:20px ;
-  }
-  .btnBack{
-    width: 300px;
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.containerBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.rightBtns {
+  display: flex;
+}
+.btn {
+  margin-left: 50px;
+  width: 300px;
+  padding: 10px;
+  background-color: #018786;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.containerModal {
+  display: flex;
+  flex-direction: column;
+}
+.comment {
+  max-height: 120px;
+  width: 100% !important;
+  margin: 20px 0;
+}
+.modalBtnContainer {
+  display: flex;
+}
+.btnRefuse {
+  width: 300px;
   padding: 10px;
   background-color: #03dac6;
   color: white;
   border-radius: 20px;
   cursor: pointer;
-  }
+}
+.btnBack {
+  width: 300px;
+  padding: 10px;
+  background-color: #03dac6;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btnAccept {
+  width: 300px;
+  padding: 10px;
+  background-color: #03dac6;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
