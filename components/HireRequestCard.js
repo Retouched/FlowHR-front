@@ -63,12 +63,7 @@ function HireRequestCard(props) {
       {!isDone && <FontAwesomeIcon icon={faHourglassHalf} size="xl" />}
       <div>Demande n°{props.numRequest}</div>
       <div>{formatDate(props.dateHireRequest)}</div>
-      {!hrProfil && (
-        <div>
-          {nbrOfChoiceLeft}
-          validation(s) en attente
-        </div>
-      )}
+      {!hrProfil && <div>{nbrOfChoiceLeft} validation(s) en attente</div>}
       {hrProfil && (
         <div className={styles.rhDetailsContainer}>
           {props.dpRequestStatus === 1 && (

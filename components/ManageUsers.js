@@ -167,28 +167,28 @@ function ManageUsers() {
               <h2>Creation d'un collaborateur</h2>
               <input
                 type="text"
-                placeholder="firstname"
+                placeholder="Prénom"
                 id="addUserFirstname"
                 value={addUserFirstname}
                 onChange={(e) => setAddUserFirstname(e.target.value)}
               ></input>
               <input
                 type="text"
-                placeholder="lastname"
+                placeholder="Nom"
                 id="addUserLastname"
                 value={addUserLastname}
                 onChange={(e) => setAddUserLastname(e.target.value)}
               ></input>
               <input
                 type="text" // a changer en password pour mise en production
-                placeholder="password"
+                placeholder="Mot de passe"
                 id="addUserPassword"
                 value={addUserPassword}
                 onChange={(e) => setAddUserPassword(e.target.value)}
               ></input>
               <input
                 type="text"
-                placeholder="email"
+                placeholder="Email"
                 id="addUserEmail"
                 value={addUserEmail}
                 onChange={(e) => setAddUserEmail(e.target.value)}
