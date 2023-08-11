@@ -1,10 +1,48 @@
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: calc(100vh- 73px);
+  /* align-items: center; */
 }
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border: solid 4px #018786 ;
+  padding: 5px;
+  border-radius: 20px;
+  margin: auto;
+  width: fit-content;
 
+}
+.contractType{
+  display: flex;
+  width: 20%;
+}
 .title {
   display: flex;
   align-items: center;
+  justify-content: center;
+  
+}
+.message{
+  margin-right: 40px;
+}
+.btnContainer{
+  display:flex;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: flex-end;
+  margin-top: 175px;
+}
+
+.nextBtn{
+margin-left: 40px;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

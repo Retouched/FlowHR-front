@@ -1,10 +1,42 @@
-.wageCardContainer {
+.main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: calc(100vh- 73px);
+  /* align-items: center; */
 }
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border: solid 4px #018786 ;
+  padding: 5px;
+  border-radius: 20px;
+  margin: auto;
+  width: fit-content;
 
+}
 .title {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
+.wageContainer{
+  display: flex;
+  flex-direction: row;
+}
+.wageColumn{
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+}
+.btnContainer{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-top: 79px;
+}
+.nextBtn{
+  margin-left: 40px;
+  }

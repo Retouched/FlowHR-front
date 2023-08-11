@@ -138,99 +138,117 @@ function RequestContractCard(props) {
         <FontAwesomeIcon
           icon={faFileContract}
           size="xl"
-          className={styles.contract}
+          className={styles.message}
         />
         <h2>TYPE DE CONTRAT</h2>
       </div>
-      <span>Choisir le type de contrat </span>
-      <select
-        disabled={
-          props?.data?.hireRequest?.contractType ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        name="selectedContractType"
-        value={addContractType}
-        onChange={(e) => setAddContractType(e.target.value)}
-      >
-        {allContractTypes}
-      </select>
-      <span>Temps de travail </span>
-      <input
-        disabled={
-          props?.data?.hireRequest?.pourcentageWorktime ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="text"
-        placeholder="en pourcentage"
-        value={addPourcentageWorktime}
-        onChange={(e) => setAddPourcentageWorkTime(e.target.value)}
-      ></input>
-      <span>%</span>
-      <span>Choisir le motif de contrat </span>
-      <select
-        disabled={
-          props?.data?.hireRequest?.contractReason ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        name="selectedContractReason"
-        value={addContractReason}
-        onChange={(e) => setAddContractReason(e.target.value)}
-      >
-        {allContractReasons}
-      </select>
-      <span>Date de début de contrat </span>
-      <input
-        disabled={
-          props?.data?.hireRequest?.startDateContract ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="date"
-        placeholder="jj/mm/aaaa"
-        value={addStartDateContract}
-        onChange={(e) => {
-          setAddStartDateContract(e.target.value);
-        }}
-      ></input>
-      <span>Date de fin de contrat </span>
-      <input
-        disabled={
-          props?.data?.hireRequest?.endDateContract ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="date"
-        placeholder="jj/mm/aaaa"
-        value={addEndDateContract}
-        onChange={(e) => {
-          setAddEndDateContract(e.target.value);
-        }}
-      ></input>
-      <span>Durée du contrat</span>
-      <span>{addDurationContractMonth} mois</span>
+      <div className={styles.inputContainer}>
+        <span>Choisir le type de contrat </span>
+        <select
+          disabled={
+            props?.data?.hireRequest?.contractType ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
+          name="selectedContractType"
+          value={addContractType}
+          onChange={(e) => setAddContractType(e.target.value)}
+          className={styles.contractType}
+        >
+          {allContractTypes}
+        </select>
+        <div className={styles.row}>
+          <span>Temps de travail (%)</span>
+          <input
+            disabled={
+              props?.data?.hireRequest?.pourcentageWorktime ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="text"
+            placeholder="Temps de travail en pourcentage"
+            value={addPourcentageWorktime}
+            onChange={(e) => setAddPourcentageWorkTime(e.target.value)}
+          ></input>
+        </div>
+        <div className={styles.row}>
+          <span>Choisir le motif de contrat </span>
+          <select
+            disabled={
+              props?.data?.hireRequest?.contractReason ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            name="selectedContractReason"
+            value={addContractReason}
+            onChange={(e) => setAddContractReason(e.target.value)}
+          >
+            {allContractReasons}
+          </select>
+        </div>
+        <div className={styles.row}>
+          <span>Date de début de contrat </span>
+          <input
+            disabled={
+              props?.data?.hireRequest?.startDateContract ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="date"
+            placeholder="jj/mm/aaaa"
+            value={addStartDateContract}
+            onChange={(e) => {
+              setAddStartDateContract(e.target.value);
+            }}
+          ></input>
+        </div>
+        <div className={styles.row}>
+          <span>Date de fin de contrat </span>
+          <input
+            disabled={
+              props?.data?.hireRequest?.endDateContract ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="date"
+            placeholder="jj/mm/aaaa"
+            value={addEndDateContract}
+            onChange={(e) => {
+              setAddEndDateContract(e.target.value);
+            }}
+          ></input>
+        </div>
+        <div className={styles.row}>
+          <span>Durée du contrat</span>
+          <span>{addDurationContractMonth} mois</span>
+        </div>
+      </div>
       {!props.hideButtons && (
         <div className={styles.btnContainer}>
-          <span onClick={handleCancel}>
+          <span className={styles.cancelBtn} onClick={handleCancel}>
             <BtnCancelComponent />
           </span>
-          <span
-            onClick={() => {
-              router.push(`/requestDetails`);
-            }}
-          >
-            <BtnBack />
-          </span>
-          <span onClick={() => handleSecondSubmit()}>
-            <BtnNextComponent />
-          </span>
+          <div className={styles.rightBtns}>
+            <span
+              className={styles.backBtn}
+              onClick={() => {
+                router.push(`/requestDetails`);
+              }}
+            >
+              <BtnBack />
+            </span>
+            <span
+              className={styles.nextBtn}
+              onClick={() => handleSecondSubmit()}
+            >
+              <BtnNextComponent />
+            </span>
+          </div>
         </div>
       )}
     </div>

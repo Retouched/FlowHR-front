@@ -82,6 +82,7 @@ function Home() {
       <main className={styles.main}>
         <div className={styles.upperPanel}>
           <Image
+            className={styles.logo}
             style={{ backgroundColor: "transparent" }}
             src="/logo.png"
             alt="logo"

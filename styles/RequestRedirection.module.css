@@ -18,8 +18,14 @@
   border-radius: 40px;
   color: white;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .smiley {
   width: 200px;
+}
+.btnContainer{
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
 }

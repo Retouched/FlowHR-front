@@ -1,7 +1,87 @@
-.main {
-  width: 100vw;
-}
+
 
 .cardsContainer {
   display: flex;
+  justify-content: space-around;
+}
+.btnContainer{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+.confirmBtn{
+  margin-left: 40px;
+}
+.detailsCard{
+  animation: drop-in 1000ms undefined-easeOutBounce;
+}
+.wageCard{  
+  animation: drop-in 1000ms ease-out;
+}
+.contractCard{
+  animation: slide-up 1000ms ease-out;
+}
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes undefined-easeOutBounce {
+	0% {
+		transform: translateX(0%);
+	}
+
+	12% {
+		transform: translateX(-10.89%);
+	}
+
+	24% {
+		transform: translateX(-43.56%);
+	}
+
+	36% {
+		transform: translateX(-98.01%);
+	}
+
+	54% {
+		transform: translateX(-75.02%);
+	}
+
+	74% {
+		transform: translateX(-98.37%);
+	}
+
+	82% {
+		transform: translateX(-93.75%);
+	}
+
+	92% {
+		transform: translateX(-99.34%);
+	}
+
+	96% {
+		transform: translateX(-98.46%);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+
 }

@@ -88,131 +88,146 @@ function RequestWageCard(props) {
   };
 
   return (
-    <div className={styles.wageCardContainer}>
+    <div className={styles.main}>
       <div className={styles.title}>
-        <FontAwesomeIcon icon={faEuroSign} size="xl" className={styles.euro} />
+        <FontAwesomeIcon
+          className={styles.message}
+          icon={faEuroSign}
+          size="xl"
+        />
         <h2>ELEMENTS DE REMUNERATION</h2>
       </div>
-      <span>Fourchette de rémunération mensuelle </span>
-      <span>Salaire mensuel minimum </span>
-      <input
-        disabled={
-          props?.data?.hireRequest?.minimumWage ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="text"
-        placeholder="Salaire de base mensuel en €"
-        value={addMinimumWage}
-        onChange={(e) => setAddMinimumWage(e.target.value)}
-      ></input>
-      <span>€</span>
-      <span>Salaire mensuel maximum </span>
-      <input
-        disabled={
-          props?.data?.hireRequest?.maximumWage ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="text"
-        placeholder="Salaire de base mensuel en €"
-        value={addMaximumWage}
-        onChange={(e) => setAddMaximumWage(e.target.value)}
-      ></input>
-      <span>€</span>
-      <div>
-        <span>Variable mensuel </span>
+      <div className={styles.inputContainer}>
+        <span>Fourchette de rémunération mensuelle </span>
+        <div className={styles.wageContainer}>
+          <div className={styles.wageColumn}>
+            <span>Salaire mensuel minimum (€) </span>
+            <input
+              disabled={
+                props?.data?.hireRequest?.minimumWage ||
+                router.pathname.includes("/requestConfirmation")
+                  ? true
+                  : false
+              }
+              type="text"
+              placeholder="Salaire de base mensuel en €"
+              value={addMinimumWage}
+              onChange={(e) => setAddMinimumWage(e.target.value)}
+            ></input>
+          </div>
+          <div className={styles.wageColumn}>
+            <span>Salaire mensuel maximum (€) </span>
+            <input
+              disabled={
+                props?.data?.hireRequest?.maximumWage ||
+                router.pathname.includes("/requestConfirmation")
+                  ? true
+                  : false
+              }
+              type="text"
+              placeholder="Salaire de base mensuel en €"
+              value={addMaximumWage}
+              onChange={(e) => setAddMaximumWage(e.target.value)}
+            ></input>
+          </div>
+        </div>
+        <div>
+          <span>Variable mensuel </span>
+          <input
+            disabled={
+              props?.data?.hireRequest?.monthlyVariableWage ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="checkbox"
+            checked={addMonthlyVariableWage}
+            onChange={handleClickOnMonthlyVariableWage}
+          />
+        </div>
         <input
           disabled={
-            props?.data?.hireRequest?.monthlyVariableWage ||
+            props?.data?.hireRequest?.monthlyVariableWageAmount ||
             router.pathname.includes("/requestConfirmation")
               ? true
               : false
           }
-          type="checkbox"
-          checked={addMonthlyVariableWage}
-          onChange={handleClickOnMonthlyVariableWage}
-        />
-      </div>
-      <input
-        disabled={
-          props?.data?.hireRequest?.monthlyVariableWageAmount ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="text"
-        placeholder="Variable mensuel en €"
-        value={addMonthlyVariableWageAmount}
-        onChange={(e) => setAddMonthlyVariableWageAmount(e.target.value)}
-      ></input>
-      <div>
-        <span>Variable annuel </span>
+          type="text"
+          placeholder="Variable mensuel en €"
+          value={addMonthlyVariableWageAmount}
+          onChange={(e) => setAddMonthlyVariableWageAmount(e.target.value)}
+        ></input>
+        <div>
+          <span>Variable annuel </span>
+          <input
+            disabled={
+              props?.data?.hireRequest?.annualVariableWage ||
+              router.pathname.includes("/requestConfirmation")
+                ? true
+                : false
+            }
+            type="checkbox"
+            checked={addAnnualVariableWage}
+            onChange={handleClickOnAnnualVariableWage}
+          />
+        </div>
         <input
           disabled={
-            props?.data?.hireRequest?.annualVariableWage ||
+            props?.data?.hireRequest?.annualVariableWageAmount ||
             router.pathname.includes("/requestConfirmation")
               ? true
               : false
           }
-          type="checkbox"
-          checked={addAnnualVariableWage}
-          onChange={handleClickOnAnnualVariableWage}
+          type="text"
+          placeholder="Variable annuel en €"
+          value={addAnnualVariableWageAmount}
+          onChange={(e) => setAddAnnualVariableWageAmount(e.target.value)}
+        ></input>
+        <span>Accompagnement déménagement </span>
+        <Switch
+          disabled={
+            props?.data?.hireRequest?.moveAssist ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
+          checked={addMoveAssist}
+          onChange={handleSwitchOnAnnualVariableWage}
         />
+        <span>Demande annexe </span>
+        <input
+          disabled={
+            props?.data?.hireRequest?.addAnnexDemand ||
+            router.pathname.includes("/requestConfirmation")
+              ? true
+              : false
+          }
+          type="text"
+          placeholder="Demande annexe"
+          value={addAnnexDemand}
+          onChange={(e) => setAddAnnexDemand(e.target.value)}
+        ></input>
       </div>
-      <input
-        disabled={
-          props?.data?.hireRequest?.annualVariableWageAmount ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="text"
-        placeholder="Variable annuel en €"
-        value={addAnnualVariableWageAmount}
-        onChange={(e) => setAddAnnualVariableWageAmount(e.target.value)}
-      ></input>
-      <span>Accompagnement déménagement </span>
-      <Switch
-        disabled={
-          props?.data?.hireRequest?.moveAssist ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        checked={addMoveAssist}
-        onChange={handleSwitchOnAnnualVariableWage}
-      />
-      <span>Demande annexe </span>
-      <input
-        disabled={
-          props?.data?.hireRequest?.addAnnexDemand ||
-          router.pathname.includes("/requestConfirmation")
-            ? true
-            : false
-        }
-        type="text"
-        placeholder="Demande annexe"
-        value={addAnnexDemand}
-        onChange={(e) => setAddAnnexDemand(e.target.value)}
-      ></input>
       {!props.hideButtons && (
         <div className={styles.btnContainer}>
           <span onClick={handleCancel}>
             <BtnCancelComponent />
           </span>
-          <span
-            onClick={() => {
-              router.push(`/requestContract`);
-            }}
-          >
-            <BtnBack />
-          </span>
-          <span onClick={() => handleThirdSubmit()}>
-            <BtnNextComponent />
-          </span>
+          <div className={styles.rightBtns}>
+            <span
+              onClick={() => {
+                router.push(`/requestContract`);
+              }}
+            >
+              <BtnBack />
+            </span>
+            <span
+              className={styles.nextBtn}
+              onClick={() => handleThirdSubmit()}
+            >
+              <BtnNextComponent />
+            </span>
+          </div>
         </div>
       )}
     </div>

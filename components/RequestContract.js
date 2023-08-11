@@ -5,7 +5,6 @@ function RequestContract() {
   return (
     <div>
       <NavBar />
-      <div>INSERER LA PROGRESSION</div>
       <RequestContractCard />
     </div>
   );

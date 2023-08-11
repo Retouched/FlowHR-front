@@ -128,7 +128,6 @@ function RequestConfirmation() {
   return (
     <div className={styles.main}>
       <NavBar />
-      <div>INSERER LA PROGRESSION</div>
       <div className={styles.cardsContainer}>
         <div className={styles.detailsCard}>
           <RequestDetailsCard hideButtons={true} />
@@ -144,17 +143,22 @@ function RequestConfirmation() {
         <span onClick={handleCancel}>
           <BtnCancelComponent />
         </span>
-        <span
-          onClick={() => {
-            dispatch(resetStore());
-            router.push(`/requestWage`);
-          }}
-        >
-          <BtnBack />
-        </span>
-        <span onClick={() => handleFinalSubmit()}>
-          <BtnConfirmComponent />
-        </span>
+        <div className={styles.rightBtns}>
+          <span
+            onClick={() => {
+              dispatch(resetStore());
+              router.push(`/requestWage`);
+            }}
+          >
+            <BtnBack />
+          </span>
+          <span
+            className={styles.confirmBtn}
+            onClick={() => handleFinalSubmit()}
+          >
+            <BtnConfirmComponent />
+          </span>
+        </div>
       </div>
     </div>
   );

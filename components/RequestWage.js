@@ -5,7 +5,6 @@ function RequestWage() {
   return (
     <div>
       <NavBar />
-      <div>INSERER LA PROGRESSION</div>
       <RequestWageCard />
     </div>
   );
