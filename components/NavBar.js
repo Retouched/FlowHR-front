@@ -42,7 +42,7 @@ function NavBar() {
             router.push("/dashboard/rh/manageUsers");
           }}
         >
-          <span className="Add user">Ajouter un collaborateur</span>
+          <span className="Add user">Gestion des utilisateurs</span>
         </div>
       )}
       <div

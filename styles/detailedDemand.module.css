@@ -1,6 +1,4 @@
-.main {
-    width: 100vw;
-  }
+
   
   .container {
     display: flex;
@@ -11,18 +9,25 @@
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
   }
   .containerBtns{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 10px;
   }
   .rightBtns{
     display: flex;
   }
   .btn{
     margin-left: 50px;
+    width: 300px;
+    padding: 10px;
+    background-color: #018786;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
   }
   .containerModal{
     display:flex;
@@ -38,4 +43,12 @@
   }
   .btnRefuse{
     margin-left:20px ;
+  }
+  .btnBack{
+    width: 300px;
+  padding: 10px;
+  background-color: #03dac6;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
   }
