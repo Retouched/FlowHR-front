@@ -15,7 +15,7 @@
   margin-left: 40px;
 }
 .detailsCard{
-  animation: drop-in 1000ms undefined-easeOutBounce;
+  animation: drop-in 1000ms ease-out;
 }
 .wageCard{  
   animation: drop-in 1000ms ease-out;
@@ -42,46 +42,4 @@
     opacity: 1;
     transform: translateY(0%);
   }
-}
-@keyframes undefined-easeOutBounce {
-	0% {
-		transform: translateX(0%);
-	}
-
-	12% {
-		transform: translateX(-10.89%);
-	}
-
-	24% {
-		transform: translateX(-43.56%);
-	}
-
-	36% {
-		transform: translateX(-98.01%);
-	}
-
-	54% {
-		transform: translateX(-75.02%);
-	}
-
-	74% {
-		transform: translateX(-98.37%);
-	}
-
-	82% {
-		transform: translateX(-93.75%);
-	}
-
-	92% {
-		transform: translateX(-99.34%);
-	}
-
-	96% {
-		transform: translateX(-98.46%);
-	}
-
-	100% {
-		transform: translateX(-100%);
-	}
-
 }
