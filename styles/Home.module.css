@@ -34,7 +34,7 @@
   border-bottom:solid 3px;
   
 }
-.logo{animation: drop-in 2000ms ease-out;}
+.logo{animation: drop-in 3000ms ease-out;}
 .title{
   display: flex;
   color: white;
@@ -76,8 +76,11 @@
   border-radius: 5px;
   padding: 4px;
   border-color: #3700B3;
+  animation: slide-left 3000ms ease-out;
 }
-
+.inputTitle{
+  animation: slide-right 3000ms ease-out;
+}
 .buttonConnection{
   background-color: #018786;
   border:solid 2px;
